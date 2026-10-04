@@ -3,9 +3,352 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="stylesheet" href="./vendor/bootstrap/bootstrap.min.css" />
+  <link rel="stylesheet" href="./src/style/global.css" />
   <title>Document</title>
 </head>
-<body>
-  <h1>game</h1>
+<body class="game-page">
+  <a class="visually-hidden-focusable" href="#game-content">
+    Skip to content
+  </a>
+  <header class="gd-header">
+    <nav class="navbar navbar-expand-lg gd-container" aria-label="Main navigation">
+      <a class="navbar-brand gd-logo" href="./index.html">
+        NextLevel
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#game-navigation"
+        aria-controls="game-navigation"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="game-navigation">
+        <ul class="navbar-nav gd-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="./index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="./games.html" aria-current="location">Games</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./categories.html">Categories</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./favorites.html">Favorites</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./about.html">About</a>
+          </li>
+        </ul>
+        <form class="gd-header-search" action="./index.html" method="get" role="search">
+          <label class="visually-hidden" for="game-search">Search games</label>
+          <input id="game-search" name="q" type="search" placeholder="Search games..." maxlength="100">
+        </form>
+      </div>
+    </nav>
+  </header>
+  <main class="gd-container gd-main" id="game-content" data-game-id="echoes-of-aether">
+    <nav class="gd-breadcrumbs" aria-label="Breadcrumb">
+      <ol>
+        <li>
+          <a href="./index.html">Home</a>
+        </li>
+  
+        <li>
+          <a href="./games.html">Games</a>
+        </li>
+  
+        <li aria-current="page">
+          Echoes of Aether
+        </li>
+      </ol>
+    </nav>
+  
+    <!-- GAME HERO -->
+    <section class="gd-hero" aria-labelledby="game-title">
+      <div class="gd-placeholder gd-cover" aria-hidden="true"></div>
+  
+      <div class="gd-summary">
+        <p class="gd-eyebrow">ADVENTURE · RPG</p>
+        <h1 id="game-title">Echoes of Aether</h1>
+        <div class="gd-rating">
+          <span class="gd-rating-value">
+            <span class="gd-star" aria-hidden="true">★</span>
+            <span aria-label="4.8 out of 5">4.8</span>
+          </span>
+  
+          <span>1,284 ratings</span>
+        </div>
+  
+        <p class="gd-description">
+          Explore a fractured sky realm, uncover forgotten histories,
+          and shape a journey where every choice echoes through the world.
+        </p>
+  
+        <ul class="gd-platforms" aria-label="Available platforms">
+          <li>PC</li>
+          <li>PlayStation</li>
+          <li>Xbox</li>
+        </ul>
+  
+        <div>
+          <button class="btn gd-favorite-button" id="favorite-button"
+            type="button"
+            aria-pressed="false"
+          >
+            ADD TO FAVORITES
+          </button>
+  
+          <p
+            class="gd-feedback"
+            id="favorite-feedback"
+            role="status"
+            aria-live="polite"
+          ></p>
+        </div>
+      </div>
+    </section>
+  
+    <!-- ABOUT + INFORMATION -->
+    <section class="gd-details" aria-labelledby="about-game-title">
+      <div class="gd-about">
+        <h2 id="about-game-title">About this game</h2>
+  
+        <p>
+          A story-led open-world adventure built around exploration,
+          tactical encounters, and meaningful decisions. Travel between
+          floating regions and restore the lost paths of Aether.
+        </p>
+  
+        <h3>What to expect</h3>
+  
+        <ul>
+          <li>Expansive hand-crafted regions</li>
+          <li>Choice-driven quests and companions</li>
+          <li>Tactical real-time combat</li>
+          <li>30+ hours of exploration</li>
+        </ul>
+      </div>
+  
+      <aside
+        class="gd-information"
+        aria-labelledby="game-information-title"
+      >
+        <h3 id="game-information-title">Game information</h3>
+  
+        <table>
+          <caption class="visually-hidden">
+            Echoes of Aether game information
+          </caption>
+  
+          <tbody>
+            <tr>
+              <th scope="row">Developer</th>
+              <td>Northlight Studio</td>
+            </tr>
+  
+            <tr>
+              <th scope="row">Publisher</th>
+              <td>Aether Works</td>
+            </tr>
+  
+            <tr>
+              <th scope="row">Release</th>
+              <td>
+                <time datetime="2026-03-14">March 14, 2026</time>
+              </td>
+            </tr>
+  
+            <tr>
+              <th scope="row">Genres</th>
+              <td>Adventure, RPG</td>
+            </tr>
+  
+            <tr>
+              <th scope="row">Modes</th>
+              <td>Single player</td>
+            </tr>
+          </tbody>
+        </table>
+      </aside>
+    </section>
+  
+    <!-- SCREENSHOTS -->
+    <section class="gd-section" aria-labelledby="screenshots-title">
+      <h2 id="screenshots-title">Screenshots</h2>
+  
+      <div class="row gd-row">
+        <div class="col-12 col-md-4">
+          <div
+            class="gd-placeholder gd-screenshot"
+            aria-hidden="true"
+          ></div>
+        </div>
+  
+        <div class="col-12 col-md-4">
+          <div
+            class="gd-placeholder gd-screenshot"
+            aria-hidden="true"
+          ></div>
+        </div>
+  
+        <div class="col-12 col-md-4">
+          <div
+            class="gd-placeholder gd-screenshot"
+            aria-hidden="true"
+          ></div>
+        </div>
+      </div>
+    </section>
+  
+    <!-- RELATED GAMES -->
+    <section class="gd-section" aria-labelledby="related-title">
+      <h2 id="related-title">Related games</h2>
+  
+      <div class="row gd-row">
+        <article class="col-12 col-sm-6 col-lg-3">
+          <a
+            class="gd-card"
+            href="./games.html?q=Neon%20Drift"
+            aria-label="Find Neon Drift in the catalog"
+          >
+            <div
+              class="gd-placeholder gd-card-image"
+              aria-hidden="true"
+            ></div>
+  
+            <h3>Neon Drift</h3>
+  
+            <div class="gd-card-meta">
+              <span>Genre Platform</span>
+  
+              <span class="gd-card-rating">
+                <span aria-hidden="true">★</span>
+                <span aria-label="4.6 out of 5">4.6</span>
+              </span>
+            </div>
+          </a>
+        </article>
+  
+        <article class="col-12 col-sm-6 col-lg-3">
+          <a
+            class="gd-card"
+            href="./games.html?q=Wildwood"
+            aria-label="Find Wildwood in the catalog"
+          >
+            <div
+              class="gd-placeholder gd-card-image"
+              aria-hidden="true"
+            ></div>
+  
+            <h3>Wildwood</h3>
+  
+            <div class="gd-card-meta">
+              <span>Genre Platform</span>
+  
+              <span class="gd-card-rating">
+                <span aria-hidden="true">★</span>
+                <span aria-label="4.6 out of 5">4.6</span>
+              </span>
+            </div>
+          </a>
+        </article>
+  
+        <article class="col-12 col-sm-6 col-lg-3">
+          <a
+            class="gd-card"
+            href="./games.html?q=Orbit%20Breaker"
+            aria-label="Find Orbit Breaker in the catalog"
+          >
+            <div
+              class="gd-placeholder gd-card-image"
+              aria-hidden="true"
+            ></div>
+  
+            <h3>Orbit Breaker</h3>
+  
+            <div class="gd-card-meta">
+              <span>Genre Platform</span>
+  
+              <span class="gd-card-rating">
+                <span aria-hidden="true">★</span>
+                <span aria-label="4.6 out of 5">4.6</span>
+              </span>
+            </div>
+          </a>
+        </article>
+  
+        <article class="col-12 col-sm-6 col-lg-3">
+          <a
+            class="gd-card"
+            href="./games.html?q=Kingdom%20Tactics"
+            aria-label="Find Kingdom Tactics in the catalog"
+          >
+            <div
+              class="gd-placeholder gd-card-image"
+              aria-hidden="true"
+            ></div>
+  
+            <h3>Kingdom Tactics</h3>
+  
+            <div class="gd-card-meta">
+              <span>Genre Platform</span>
+  
+              <span class="gd-card-rating">
+                <span aria-hidden="true">★</span>
+                <span aria-label="4.6 out of 5">4.6</span>
+              </span>
+            </div>
+          </a>
+        </article>
+      </div>
+    </section>
+  </main>
+  <footer class="gd-footer">
+    <div class="gd-container gd-footer-inner">
+      <div class="gd-footer-columns">
+        <div class="gd-footer-brand">
+          <a class="gd-logo" href="./index.html">NextLevel</a>
+          <p>Discover. Explore. Save.</p>
+        </div>
+  
+        <nav class="gd-footer-group" aria-label="Footer navigation">
+          <h2>Explore</h2>
+  
+          <div class="gd-footer-links">
+            <a href="./games.html">Games</a>
+            <span aria-hidden="true">·</span>
+            <a href="./categories.html">Categories</a>
+            <span aria-hidden="true">·</span>
+            <a href="./favorites.html">Favorites</a>
+          </div>
+        </nav>
+  
+        <div class="gd-footer-group">
+          <h2>Contact</h2>
+  
+          <a href="mailto:hello@nextlevel.example">
+            hello@nextlevel.example
+          </a>
+  
+          <a href="./about.html">About</a>
+        </div>
+      </div>
+  
+      <p class="gd-copyright">
+        © <span id="game-year">2026</span> NextLevel
+      </p>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  <script src="./vendor/bootstrap/bootstrap.bundle.min.js"></script>
+  <script type="module" src="./src/main.js"></script>
+  <script type="module" src="./src/pages/game.js"></script>
 </body>
 </html>
