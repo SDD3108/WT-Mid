@@ -6,7 +6,7 @@
 @import "./home.css";
 @import "./game.css";
 @import "./categories.css";
-
+@import "./games.css";
 body {
     min-height: 100vh;
     display: flex;
