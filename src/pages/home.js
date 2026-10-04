@@ -4,7 +4,7 @@ const status = document.querySelector('#search-status');
 const message = document.querySelector('#search-message');
 const clearButton = document.querySelector('#clear-search');
 
-function filterGames(value){
+const filterGames = (value)=>{
   const query = value.trim().toLowerCase();
   const words = query.split(/\s+/).filter(Boolean);
   let count = 0;
@@ -12,21 +12,25 @@ function filterGames(value){
   cards.forEach((card) => {
     const matches = words.every((word) => card.dataset.search.includes(word));
     card.hidden = !matches;
-    if (matches) count += 1;
+    if(matches){
+      count += 1;
+    }
   });
 
-  forms.forEach((form) => { form.elements.q.value = value; })
+  forms.forEach((form) => {
+    form.elements.q.value = value;
+  })
   status.hidden = !query
-  message.textContent = count ? `${count} ${count === 1 ? 'game' : 'games'} found for “${value.trim()}”.` : `No games found for “${value.trim()}”. Try a title, genre, or platform.`
+  message.textContent = count ? `${count} ${count == 1 ? 'game' : 'games'} found for “${value.trim()}”` : `No games found for “${value.trim()}”. Try a title, genre, or platform`
 
-  const url = new URL(window.location.href);
+  const url = new URL(window.location.href)
   if(query){
-    url.searchParams.set('q', value.trim());
+    url.searchParams.set('q', value.trim())
   }
   else{
-    url.searchParams.delete('q');
+    url.searchParams.delete('q')
   }
-  window.history.replaceState(null, '', url);
+  window.history.replaceState(null, '', url)
 }
 
 forms.forEach((form)=>{
@@ -39,7 +43,7 @@ forms.forEach((form)=>{
   });
   form.elements.q.addEventListener('input',()=>{
     if(!form.elements.q.value){
-        filterGames('');
+      filterGames('');
     }
   });
 });
@@ -51,5 +55,5 @@ clearButton.addEventListener('click',()=>{
 
 const initialQuery = new URLSearchParams(window.location.search).get('q');
 if(initialQuery){
-    filterGames(initialQuery);
+  filterGames(initialQuery);
 }

@@ -1,8 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-@import "./home.css";
 @import './tokens.css';
 @import './components.css';
 @import './adaptive.css';
+
+@import "./home.css";
+@import "./game.css";
+@import "./categories.css";
 
 body {
     min-height: 100vh;
