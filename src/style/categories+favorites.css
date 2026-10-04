@@ -1,0 +1,356 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+   --ink:#171717;
+   --muted:#666; 
+   --paper:#f7f7f5; 
+   --line:#c5c5c2; 
+   --dark:#303030; 
+  }
+
+* { box-sizing:border-box; }
+
+body { 
+  margin:0; 
+  color:var(--ink); 
+  background:var(--paper); 
+  font-family:Inter,Arial,sans-serif; 
+}
+
+a { color:inherit; }
+
+.page-width { max-width:1312px; }
+
+.page-main { 
+  padding-top:42px;
+   padding-bottom:38px; 
+  }
+
+.breadcrumb-line { 
+  display:flex; 
+  gap:10px; 
+  color:#686868; 
+  font-size:.78rem;
+  margin-bottom:40px; 
+}
+
+.breadcrumb-line a { text-decoration:none; }
+
+.page-title { 
+  margin:0 0 28px; 
+  font-size:clamp(2.25rem,4vw,3.2rem); 
+  font-weight:800; 
+  letter-spacing:-.05em; 
+  line-height:1.08; 
+}
+
+.page-intro { 
+  color:var(--muted); 
+  font-size:1rem; 
+  margin:0 0 30px; 
+}
+
+.category-grid { 
+  display:grid; 
+  grid-template-columns:repeat(3,minmax(0,1fr)); 
+  gap:20px; }
+
+.category-card { 
+  display:block; 
+  padding:14px; 
+  text-decoration:none; 
+  border:1px solid var(--line); 
+  background:#fafaf9; 
+  transition:transform .18s ease,box-shadow .18s ease; 
+}
+
+.category-card:hover,.category-card:focus-visible { 
+  transform:translateY(-3px); 
+  box-shadow:0 8px 20px #00000012; 
+}
+
+.category-art { 
+  height:180px; 
+  border:1px solid #bbb; 
+  background-color:#ddd; 
+  background-size:cover; 
+  background-position:center; 
+}
+
+.category-card h2 { 
+  margin:12px 0 13px; 
+  font-size:1.55rem; 
+  font-weight:800; 
+  letter-spacing:-.035em; 
+}
+
+.category-meta { 
+  display:flex; 
+  justify-content:space-between; 
+  gap:8px; 
+  color:#666; 
+  font-size:.75rem; 
+}
+
+.category-meta b { 
+  margin-left:6px; 
+  color:#111; 
+  font-size:1rem; 
+}
+
+.catalog-cta { 
+  margin-top:28px; 
+  padding:30px 34px; 
+  background:var(--dark); 
+  color:#fff; 
+  display:flex; 
+  align-items:center; 
+  justify-content:space-between; 
+  gap:24px; 
+}
+
+.catalog-cta h2 { 
+  margin:0 0 6px; 
+  font-size:1.65rem; 
+  font-weight:700; 
+}
+
+.catalog-cta p { 
+  margin:0; 
+  color:#ddd; 
+  font-size:.82rem; 
+}
+
+.catalog-cta .btn { 
+  font-weight:700; 
+  text-transform:uppercase; 
+  letter-spacing:.02em; 
+  font-size:.68rem; 
+}
+.favorites-main { padding-bottom:40px; }
+
+.favorites-main .page-title { margin-bottom:22px; }
+
+.favorites-main .page-intro { margin-bottom:28px; }
+
+.game-grid { 
+  display:grid; 
+  grid-template-columns:repeat(4,minmax(0,1fr)); 
+  gap:14px; 
+}
+
+.game-card { 
+  min-width:0; 
+  padding:9px; 
+  border:1px solid var(--line); 
+  background:#fff; 
+}
+
+.game-card h2,.game-card h3 { 
+  margin:9px 0 5px; 
+  font-size:.94rem; 
+  font-weight:700; 
+}
+
+.game-art { 
+  height:170px; 
+  border:1px solid #bcbcbc; 
+  background-color:#ddd; 
+  background-size:cover; 
+  background-position:center; 
+}
+
+.game-meta { 
+  display:flex; 
+  align-items:center; 
+  justify-content:space-between; 
+  gap:8px; 
+  color:#666; 
+  font-size:.68rem; 
+}
+
+.rating { 
+  color:#333; 
+  white-space:nowrap; 
+}
+
+.rating b { 
+  color:#111; 
+  font-size:1rem; 
+  margin-right:6px; 
+}
+
+.remove-button { 
+  margin-top:7px; 
+  padding:3px 8px; 
+  border:1px solid #333; 
+  background:white; 
+  color:#111; 
+  font-size:.68rem; 
+  font-weight:600; 
+}
+
+.remove-button:hover { 
+  color:white; 
+  background:#333; 
+}
+
+.favorites-note { 
+  display:flex; 
+  justify-content:space-between; 
+  gap:18px; 
+  margin:32px 0 40px; 
+  padding:18px 20px; 
+  background:#e9e9e7; 
+  font-size:.72rem;
+}
+
+.favorites-note strong { font-size:.7rem; }
+
+.discover-section h2 { 
+  margin:0 0 8px; 
+  font-size:1.65rem; 
+  font-weight:700;
+ }
+
+.section-intro { 
+  margin-bottom:28px; 
+  color:var(--muted); 
+  font-size:.82rem; 
+}
+
+.empty-state { 
+  margin:0; 
+  padding:22px; 
+  border:1px dashed #999; 
+  color:#555; 
+}
+
+.site-footer { 
+  background:var(--dark); 
+  color:#eee; 
+  padding:38px 0 30px; 
+}
+
+.footer-grid { 
+  display:grid; 
+  grid-template-columns:1fr 1fr auto; 
+  gap:30px; 
+}
+
+.footer-brand { 
+  display:inline-block; 
+  margin-bottom:4px; 
+  color:#fff; 
+  text-decoration:none; 
+  font-size:1.25rem; 
+  font-weight:700; 
+}
+
+.footer-grid p { 
+  margin:0 0 18px; 
+  font-size:.74rem;
+}
+
+.footer-grid small { 
+  color:#bbb; 
+  font-size:.68rem; 
+}
+
+.footer-grid h2 { 
+  margin:0 0 7px; 
+  font-size:.72rem; 
+  font-weight:700; 
+}
+.footer-grid a:not(.footer-brand) { 
+  display:inline-block; 
+  color:#eee; 
+  text-decoration:none; 
+  font-size:.7rem; 
+}
+
+.footer-grid div:last-child a { 
+  display:block; 
+  margin-bottom:5px; 
+}
+
+.footer-grid span { 
+  padding:0 5px; 
+  color:#aaa; }
+
+@media (max-width: 991.98px) {
+  .site-header .navbar { min-height:72px; }
+
+  .navbar-nav { gap:0; }
+
+  .search-form { 
+    width:100%; 
+    padding:8px 0 4px;
+   }
+
+  .category-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+
+  .game-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+
+  .category-art { height:160px; }
+}
+@media (max-width: 575.98px) {
+  .page-main { 
+    padding-top:28px; 
+    padding-bottom:28px; 
+  }
+
+  .breadcrumb-line { margin-bottom:28px; }
+
+  .page-title { 
+    font-size:2.25rem; 
+    margin-bottom:17px; 
+  }
+
+  .page-intro { 
+    font-size:.9rem; 
+    margin-bottom:22px; 
+  }
+
+  .category-grid { 
+    grid-template-columns:1fr; 
+    gap:14px; 
+  }
+
+  .category-card { padding:10px; }
+
+  .category-art { height:175px; }
+
+  .category-card h2 { font-size:1.4rem; }
+
+  .catalog-cta { 
+    align-items:flex-start; 
+    flex-direction:column; 
+    padding:24px; 
+  }
+
+  .game-grid { 
+    grid-template-columns:1fr 1fr; 
+    gap:9px; 
+  }
+
+  .game-card { padding:6px; }
+
+  .game-art { height:112px; }
+
+  .game-card h2,.game-card h3 { font-size:.78rem; }
+
+  .game-meta { font-size:.58rem; }
+
+  .rating b { margin-right:2px; }
+
+  .favorites-note { 
+    flex-direction:column; 
+    margin:22px 0 30px; 
+    padding:15px; 
+  }
+  
+  .discover-section h2 { font-size:1.45rem; }
+  .footer-grid { grid-template-columns:1fr 1fr; }
+  .footer-grid div:first-child { grid-column:1 / -1; }
+}
