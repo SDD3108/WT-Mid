@@ -1,0 +1,10 @@
+.site-header {
+    background: #fff;
+    border-bottom: 1px solid var(--nl-border);
+}
+.site-header .nav-link.active {
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 0.4rem;
+}
+  
