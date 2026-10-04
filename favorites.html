@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -8,11 +8,133 @@
   <link rel="stylesheet" href="./src/style/global.css" />
   <title>Document</title>
 </head>
+
 <body>
-  <h1>favorites</h1>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-  <script src="./vendor/bootstrap/bootstrap.bundle.min.js"></script>
-  <script type="module" src="./src/main.js"></script>
-  <script type="module" src="./src/pages/favorites.js"></script>
+  <header class="site-header">
+    <nav class="navbar navbar-expand-lg container page-width" aria-label="Main navigation">
+      <a class="navbar-brand" href="index.html">NextLevel</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="games.html">Games</a></li>
+          <li class="nav-item"><a class="nav-link" href="categories.html">Categories</a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="favorites.html">Favorites</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        </ul>
+        <form class="search-form" role="search" action="games.html">
+          <label class="visually-hidden" for="site-search">Search games</label>
+          <input class="form-control" id="site-search" name="q" type="search" placeholder="Search games…">
+        </form>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container page-width page-main">
+    <section aria-labelledby="page-title">
+      <h1 id="page-title" class="page-title">Your favorites</h1>
+      <p class="page-intro">
+        <span id="saved-count">4</span> saved games 
+        <span aria-hidden="true">·</span> Keep a shortlist for your next play session.
+      </p>
+
+      <div class="game-grid" id="saved-games" aria-live="polite">
+        <article class="game-card" data-game="Echoes of Aether">
+          <div class="game-art game-art-1" role="img" aria-label="Mystical blue mountain landscape"></div>
+          <h2>Echoes of Aether</h2>
+          <div class="game-meta">
+            <span>Genre Platform</span>
+            <span class="rating"><b aria-hidden="true">★</b> 4.6</span>
+          </div>
+          <button class="remove-button" type="button">Remove</button>
+        </article>
+
+        <article class="game-card" data-game="Neon Drift">
+          <div class="game-art game-art-2" role="img" aria-label="Neon city at night"></div>
+          <h2>Neon Drift</h2>
+          <div class="game-meta">
+            <span>Genre Platform</span>
+            <span class="rating"><b aria-hidden="true">★</b> 4.6</span>
+          </div>
+          <button class="remove-button" type="button">Remove</button>
+        </article>
+
+        <article class="game-card" data-game="Wildwood">
+          <div class="game-art game-art-3" role="img" aria-label="Sunlit woodland scene"></div>
+          <h2>Wildwood</h2>
+          <div class="game-meta">
+            <span>Genre Platform</span>
+            <span class="rating"><b aria-hidden="true">★</b> 4.6</span>
+          </div>
+          <button class="remove-button" type="button">Remove</button>
+        </article>
+
+        <article class="game-card" data-game="Orbit Breaker">
+          <div class="game-art game-art-4" role="img" aria-label="Colorful planet in outer space"></div>
+          <h2>Orbit Breaker</h2>
+          <div class="game-meta">
+            <span>Genre Platform</span>
+            <span class="rating"><b aria-hidden="true">★</b> 4.6</span>
+          </div>
+          <button class="remove-button" type="button">Remove</button>
+        </article>
+      </div>
+
+      <p class="empty-state" id="empty-state" hidden>Your favorites list is empty. Add a game from the catalog to save it here.</p>
+    </section>
+
+    <aside class="favorites-note"><span>Favorites are saved to this list so you can compare games later.</span><strong>♡ Use “Add to favorites” on any game</strong></aside>
+
+    <section class="discover-section" aria-labelledby="discover-title">
+      <h2 id="discover-title">More to discover</h2><p class="section-intro">Continue exploring popular picks.</p>
+      <div class="game-grid discover-grid">
+        <article class="game-card">
+          <div class="game-art game-art-5" role="img" aria-label="Snowy mountain rally course"></div>
+          <h3>Summit Rally</h3>
+          <div class="game-meta">
+            <span>Genre Platform</span>
+            <span class="rating"><b aria-hidden="true">★</b> 4.6</span>
+          </div>
+        </article>
+
+        <article class="game-card">
+          <div class="game-art game-art-6" role="img" aria-label="Moonlit valley"></div>
+          <h3>Moonlit Vale</h3>
+          <div class="game-meta">
+            <span>Genre Platform</span>
+            <span class="rating"><b aria-hidden="true">★</b> 4.6</span>
+          </div>
+        </article>
+
+        <article class="game-card">
+          <div class="game-art game-art-7" role="img" aria-label="Retro pixel landscape"></div>
+          <h3>Pixel Quest</h3>
+          <div class="game-meta">
+            <span>Genre Platform</span>
+            <span class="rating"><b aria-hidden="true">★</b> 4.6</span>
+          </div>
+        </article>
+        
+        <article class="game-card">
+          <div class="game-art game-art-8" role="img" aria-label="Bright open sky above floating islands"></div>
+          <h3>Skybound</h3>
+          <div class="game-meta">
+            <span>Genre Platform</span>
+            <span class="rating"><b aria-hidden="true">★</b> 4.6</span>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container page-width footer-grid">
+      <div><a class="footer-brand" href="index.html">NextLevel</a><p>Discover. Explore. Save.</p><small>© 2026 NextLevel</small></div>
+      <div><h2>Explore</h2><p><a href="games.html">Games</a><span>·</span><a href="categories.html">Categories</a><span>·</span><a href="favorites.html">Favorites</a></p></div>
+      <div><h2>Contact</h2><a href="mailto:support@nextlevel.example">support@nextlevel.example</a><a href="about.html">About</a></div>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="favorites.js"></script>
 </body>
 </html>
