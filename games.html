@@ -8,9 +8,197 @@
   <link rel="stylesheet" href="./src/style/global.css" />
   <title>Document</title>
 </head>
-<body>
-  <h1>games</h1>
-  <button class="btn">test</button>
+<body class="games-page">
+  <header class="gc-header">
+    <nav class="navbar navbar-expand-lg gc-container" aria-label="Main navigation">
+      <a class="navbar-brand gc-logo" href="./index.html">NextLevel</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#games-navigation" aria-controls="games-navigation" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="games-navigation">
+        <ul class="navbar-nav gc-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="./index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="./games.html" aria-current="page">
+              Games
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./categories.html">Categories</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./favorites.html">Favorites</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./about.html">About</a>
+          </li>
+        </ul>
+        <form class="gc-header-search" id="games-header-search" role="search">
+          <label class="visually-hidden" for="games-header-query">Search games</label>
+          <input id="games-header-query" name="q" type="search" placeholder="Search games...">
+        </form>
+      </div>
+    </nav>
+  </header>
+  <main class="gc-container gc-main" id="games-content">
+    <nav class="gc-breadcrumbs" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="./index.html">Home</a></li>
+        <li aria-current="page">Games</li>
+      </ol>
+    </nav>
+    <h1>Browse all games</h1>
+    <form class="gc-search" id="games-search" role="search">
+      <label class="visually-hidden" for="games-query">Search by title, topic, or keyword</label>
+      <input id="games-query" name="q" type="search" placeholder="Search by title, topic, or keyword">
+      <button type="submit">SEARCH</button>
+    </form>
+    <div class="gc-catalog">
+      <aside class="gc-filters" aria-labelledby="filters-title">
+        <h2 id="filters-title">Filters</h2>
+        <form id="games-filters">
+          <fieldset>
+            <legend>Genre</legend>
+            <label>
+              <input type="checkbox" name="genre" value="Action">
+              <span>Action</span>
+            </label>
+            <label>
+              <input type="checkbox" name="genre" value="Adventure">
+              <span>Adventure</span>
+            </label>
+            <label>
+              <input type="checkbox" name="genre" value="RPG">
+              <span>RPG</span>
+            </label>
+            <label>
+              <input type="checkbox" name="genre" value="Strategy">
+              <span>Strategy</span>
+            </label>
+          </fieldset>
+          <fieldset>
+            <legend>Platform</legend>
+            <label>
+              <input type="checkbox" name="platform" value="PC">
+              <span>PC</span>
+            </label>
+            <label>
+              <input type="checkbox" name="platform" value="Console">
+              <span>Console</span>
+            </label>
+            <label>
+              <input type="checkbox" name="platform" value="Mobile">
+              <span>Mobile</span>
+            </label>
+          </fieldset>
+          <fieldset>
+            <legend>Rating</legend>
+            <div class="d-flex gap-3">
+              <label>
+                <input type="radio" name="rating" value="4">
+                <span>4+</span>
+              </label>
+              <label>
+                <input type="radio" name="rating" value="3">
+                <span>3+</span>
+              </label>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Release year</legend>
+            <label>
+              <input type="checkbox" name="year" value="2026">
+              <span>2026</span>
+            </label>
+            <label>
+              <input type="checkbox" name="year" value="2025">
+              <span>2025</span>
+            </label>
+            <label>
+              <input type="checkbox" name="year" value="earlier">
+              <span>Earlier</span>
+            </label>
+          </fieldset>
+          <button class="gc-reset" type="button" id="games-reset">Reset filters</button>
+        </form>
+      </aside>
+      <section class="gc-results" aria-label="Game catalog">
+        <div class="gc-toolbar">
+          <p id="games-count" role="status" aria-live="polite"></p>
+          <label class="visually-hidden" for="games-sort">Sort games</label>
+          <select id="games-sort">
+            <option value="popular">Sort: Most popular</option>
+            <option value="rating">Sort: Highest rated</option>
+            <option value="newest">Sort: Newest</option>
+            <option value="title">Sort: Title A–Z</option>
+          </select>
+        </div>
+        <div class="gc-grid">
+          <div class="row gc-cards" id="games-list"></div>
+        </div>
+        <div class="gc-empty" id="games-empty" hidden>
+          <h2>No games found</h2>
+          <p>Try another search or reset your filters.</p>
+          <button class="btn gc-empty-button" id="games-empty-reset" type="button">Reset filters</button>
+        </div>
+        <nav class="gc-pagination" id="games-pagination" aria-label="Catalog pages"></nav>
+        <noscript>
+          <p class="mt-4">Please enable JavaScript to view and filter the game catalog</p>
+        </noscript>
+      </section>
+    </div>
+  </main>
+  <footer class="gc-footer">
+    <div class="gc-container gc-footer-inner">
+      <div class="gc-footer-columns">
+        <div class="gc-footer-brand">
+          <a class="gc-logo" href="./index.html">NextLevel</a>
+          <p>Discover. Explore. Save.</p>
+        </div>
+  
+        <nav class="gc-footer-group" aria-label="Footer navigation">
+          <h2>Explore</h2>
+  
+          <div class="gc-footer-links">
+            <a href="./games.html">Games</a>
+            <span aria-hidden="true">·</span>
+            <a href="./categories.html">Categories</a>
+            <span aria-hidden="true">·</span>
+            <a href="./favorites.html">Favorites</a>
+          </div>
+        </nav>
+  
+        <div class="gc-footer-group">
+          <h2>Contact</h2>
+          <a href="mailto:support@nextlevel.example">
+            support@nextlevel.example
+          </a>
+          <a href="./about.html">About</a>
+        </div>
+      </div>
+  
+      <p class="gc-copyright">
+        © <span id="games-year">2026</span> NextLevel
+      </p>
+    </div>
+  </footer>
+  <template id="games-card-template">
+    <article class="col-12 col-sm-6 col-lg-4">
+      <a class="gc-card">
+        <div class="gc-card-image" aria-hidden="true"></div>
+        <h3 class="gc-card-title"></h3>
+        <div class="gc-card-meta">
+          <span class="gc-card-category"></span>
+          <span class="gc-card-rating">
+            <span class="gc-star" aria-hidden="true">★</span>
+            <span class="gc-card-score"></span>
+          </span>
+        </div>
+      </a>
+    </article>
+  </template>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
   <script src="./vendor/bootstrap/bootstrap.bundle.min.js"></script>
   <script type="module" src="./src/main.js"></script>
