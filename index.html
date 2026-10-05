@@ -1,11 +1,187 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Find your next game with NextLevel. Explore featured games, browsegenres, and discover trending picks." />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="stylesheet" href="./vendor/bootstrap/bootstrap.min.css" />
+  <link rel="stylesheet" href="./src/style/global.css" />
   <title>Document</title>
 </head>
-<body>
-  <h1>home</h1>
+<body class="home-page" data-page="home">
+  <header class="home-header">
+    <nav class="navbar navbar-expand-lg home-shell" aria-label="Main navigation">
+      <a class="navbar-brand home-brand" href="./index.html">NextLevel</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+        data-bs-target="#home-navigation" aria-controls="home-navigation"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="home-navigation">
+        <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" data-nav="home" href="./index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" data-nav="games" href="./games.html">Games</a></li>
+            <li class="nav-item"><a class="nav-link" data-nav="categories" href="./categorieshtml">Categories</a></li>
+            <li class="nav-item"><a class="nav-link" data-nav="favorites" href="./favoriteshtml">Favorites</a></li>
+            <li class="nav-item"><a class="nav-link" data-nav="about" href="./about.html">About</a></li>
+        </ul>
+        <form class="header-search" role="search" data-home-search>
+          <label class="visually-hidden" for="header-query">Search games</label>
+          <input id="header-query" name="q" type="search" placeholder="Search games…" maxlength="100" />
+        </form>
+      </div>
+    </nav>
+  </header>
+  <main class="home-shell home-content" id="main-content">
+    <section class="discovery-hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="hero-eyebrow">FIND YOUR NEXT GAME</p>
+        <h1 id="hero-title">What will you play next?</h1>
+        <p class="hero-description">Search by title, genre, platform, or mood and discover a game worthsaving.</p>
+        <form class="hero-search" role="search" data-home-search>
+          <label class="visually-hidden" for="hero-query">Search games, genres, topics</label>
+          <input id="hero-query" name="q" type="search" placeholder="Search games, genres, topics…"maxlength="100" />
+          <button class="btn" type="submit">SEARCH</button>
+        </form>
+      </div>
+      <div class="hero-art" aria-hidden="true"></div>
+    </section>
+    <div class="search-status" id="search-status" role="status" hidden>
+      <p id="search-message"></p>
+      <button class="btn btn-sm btn-outline-dark mt-2" type="button" id="clear-search">Show all games</button>
+    </div>
+    <section class="home-section" aria-labelledby="featured-title">
+      <div class="section-heading">
+        <h2 id="featured-title">Featured games</h2>
+        <p>Editor picks to start your search.</p>
+      </div>
+      <div class="row games-row featured-row">
+        <article class="col-12 col-sm-6 col-lg-3" data-game-card data-search="echoes of aether adventurerpg pc">
+          <a class="game-card" href="./game.html?id=echoes-of-aether" aria-label="View Echoes of Aether">
+            <div class="game-art" aria-hidden="true"></div>
+            <h3>Echoes of Aether</h3>
+            <div class="game-meta">
+              <span>Genre Platform</span>
+              <span class="game-rating" aria-label="Rating: 4.6 out of 5">4.6</span>
+            </div>
+          </a>
+        </article>
+        <article class="col-12 col-sm-6 col-lg-3" data-game-card data-search="neon drift racing pc">
+          <a class="game-card" href="./game.html?id=neon-drift" aria-label="View Neon Drift">
+            <div class="game-art" aria-hidden="true"></div>
+            <h3>Neon Drift</h3>
+            <div class="game-meta">
+              <span>Genre Platform</span>
+              <span class="game-rating" aria-label="Rating: 4.6 out of 5">4.6</span>
+            </div>
+          </a>
+        </article>
+        <article class="col-12 col-sm-6 col-lg-3" data-game-card data-search="wildwood adventure indiepc">
+          <a class="game-card" href="./game.html?id=wildwood" aria-label="View Wildwood">
+            <div class="game-art" aria-hidden="true"></div>
+            <h3>Wildwood</h3>
+            <div class="game-meta">
+              <span>Genre Platform</span>
+              <span class="game-rating" aria-label="Rating: 4.6 out of 5">4.6</span>
+            </div>
+          </a>
+        </article>
+        <article class="col-12 col-sm-6 col-lg-3" data-game-card data-search="orbit breaker action pc">
+          <a class="game-card" href="./game.html?id=orbit-breaker" aria-label="View Orbit Breaker">
+            <div class="game-art" aria-hidden="true"></div>
+            <h3>Orbit Breaker</h3>
+            <div class="game-meta">
+              <span>Genre Platform</span>
+              <span class="game-rating" aria-label="Rating: 4.6 out of 5">4.6</span>
+            </div>
+          </a>
+        </article>
+      </div>
+    </section>
+    <section class="home-section" aria-labelledby="genres-title">
+      <div class="section-heading">
+        <h2 id="genres-title">Browse by genre</h2>
+      </div>
+      <div class="genre-grid">
+        <a class="genre-link" href="./games.html?genre=action" aria-label="Browse action games"></a>
+        <a class="genre-link" href="./games.html?genre=adventure" aria-label="Browse adventure games"></a>
+        <a class="genre-link" href="./games.html?genre=rpg" aria-label="Browse rpg games"></a>
+        <a class="genre-link" href="./games.html?genre=strategy" aria-label="Browse strategy games"></a>
+        <a class="genre-link" href="./games.html?genre=racing" aria-label="Browse racing games"></a>
+        <a class="genre-link" href="./games.html?genre=indie" aria-label="Browse indie games"></a>
+      </div>
+    </section>
+    <section class="home-section" aria-labelledby="trending-title">
+      <div class="section-heading">
+        <h2 id="trending-title">Trending now</h2>
+      </div>
+      <div class="row games-row trending-row">
+        <article class="col-12 col-sm-6 col-lg-3" data-game-card data-search="kingdom tactics strategypc">
+          <a class="game-card" href="./game.html?id=kingdom-tactics" aria-label="View Kingdom Tactics">
+            <div class="game-art" aria-hidden="true"></div>
+            <h3>Kingdom Tactics</h3>
+            <div class="game-meta">
+              <span>Genre Platform</span>
+              <span class="game-rating" aria-label="Rating: 4.6 out of 5">4.6</span>
+            </div>
+          </a>
+        </article>
+        <article class="col-12 col-sm-6 col-lg-3" data-game-card data-search="summit rally racing pc">
+          <a class="game-card" href="./game.html?id=summit-rally" aria-label="View Summit Rally">
+            <div class="game-art" aria-hidden="true"></div>
+            <h3>Summit Rally</h3>
+            <div class="game-meta">
+              <span>Genre Platform</span>
+              <span class="game-rating" aria-label="Rating: 4.6 out of 5">4.6</span>
+            </div>
+          </a>
+        </article>
+        <article class="col-12 col-sm-6 col-lg-3" data-game-card data-search="moonlit vale rpg indie pc">
+          <a class="game-card" href="./game.html?id=moonlit-vale" aria-label="View Moonlit Vale">
+            <div class="game-art" aria-hidden="true"></div>
+            <h3>Moonlit Vale</h3>
+            <div class="game-meta">
+              <span>Genre Platform</span>
+              <span class="game-rating" aria-label="Rating: 4.6 out of 5">4.6</span>
+            </div>
+          </a>
+        </article>
+        <article class="col-12 col-sm-6 col-lg-3" data-game-card data-search="pixel quest adventureindie pc">
+          <a class="game-card" href="./game.html?id=pixel-quest" aria-label="View Pixel Quest">
+            <div class="game-art" aria-hidden="true"></div>
+            <h3>Pixel Quest</h3>
+            <div class="game-meta">
+              <span>Genre Platform</span>
+              <span class="game-rating" aria-label="Rating: 4.6 out of 5">4.6</span>
+            </div>
+          </a>
+        </article>
+      </div>
+    </section>
+  </main>
+  <footer class="home-footer">
+    <div class="home-shell footer-inner">
+      <div class="footer-columns">
+        <div class="footer-brand">
+          <a class="home-brand" href="./index.html">NextLevel</a>
+          <p>Discover. Explore. Save.</p>
+        </div>
+        <nav class="footer-group" aria-label="Explore">
+          <h2>Explore</h2>
+          <p class="footer-links"><a href="./games.html">Games</a> &nbsp;·&nbsp; <a href="./categorieshtml">Categories</a> &nbsp;·&nbsp; <a href="./favorites.html">Favorites</a></p>
+        </nav>
+        <div class="footer-group">
+          <h2>Contact</h2>
+          <a href="mailto:support@nextlevel.example">support@nextlevel.example</a>
+          <a href="./about.html">About</a>
+        </div>
+      </div>
+      <p class="footer-copyright">© <span data-year>2026</span> Nextlevel</p>
+    </div>
+  </footer>
+  <script src="./vendor/bootstrap/bootstrap.bundle.min.js"></script>
+  <script type="module" src="./src/main.js"></script>
+  <script type="module" src="./src/pages/home.js"></script>
 </body>
 </html>
