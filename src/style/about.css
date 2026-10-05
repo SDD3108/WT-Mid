@@ -81,7 +81,9 @@ a:hover {
 .header-search {
   width: 235px;
 }
-
+.header-search input:focus{
+  outline: none;
+}
 .header-search .form-control {
   min-height: 36px;
   border-color: #c9c9c9;

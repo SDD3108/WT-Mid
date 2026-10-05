@@ -3,28 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
   <link rel="stylesheet" href="./vendor/bootstrap/bootstrap.min.css" />
   <link rel="stylesheet" href="./src/style/global.css" />
   <title>Document</title>
+  <link rel="stylesheet" href="./src/style/layout.css" />
 </head>
 
-<body>
-  <header class="site-header">
-    <nav class="navbar navbar-expand-lg container page-width" aria-label="Main navigation">
-      <a class="navbar-brand" href="index.html">NextLevel</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-      <div class="collapse navbar-collapse" id="mainNav">
-        <ul class="navbar-nav mx-auto">
-          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="games.html">Games</a></li>
-          <li class="nav-item"><a class="nav-link" href="categories.html">Categories</a></li>
-          <li class="nav-item"><a class="nav-link active" aria-current="page" href="favorites.html">Favorites</a></li>
-          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+<body data-page="favorites">
+  <header class="home-header">
+    <nav class="navbar navbar-expand-lg home-shell" aria-label="Main navigation">
+      <a class="navbar-brand home-brand" href="./index.html">NextLevel</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+        data-bs-target="#home-navigation" aria-controls="home-navigation"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="home-navigation">
+        <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" data-nav="home" href="./index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" data-nav="games" href="./games.html">Games</a></li>
+            <li class="nav-item"><a class="nav-link" data-nav="categories" href="./categories.html">Categories</a></li>
+            <li class="nav-item"><a class="nav-link" data-nav="favorites" href="./favorites.html">Favorites</a></li>
+            <li class="nav-item"><a class="nav-link" data-nav="about" href="./about.html">About</a></li>
         </ul>
-        <form class="search-form" role="search" action="games.html">
-          <label class="visually-hidden" for="site-search">Search games</label>
-          <input class="form-control" id="site-search" name="q" type="search" placeholder="Search games…">
+        <form class="header-search" role="search" action="./games.html" method="get" data-home-search>
+          <label class="visually-hidden" for="header-query">Search games</label>
+          <input id="header-query" name="q" type="search" placeholder="Search games…" maxlength="100" />
         </form>
       </div>
     </nav>
@@ -127,14 +131,27 @@
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container page-width footer-grid">
-      <div><a class="footer-brand" href="index.html">NextLevel</a><p>Discover. Explore. Save.</p><small>© 2026 NextLevel</small></div>
-      <div><h2>Explore</h2><p><a href="games.html">Games</a><span>·</span><a href="categories.html">Categories</a><span>·</span><a href="favorites.html">Favorites</a></p></div>
-      <div><h2>Contact</h2><a href="mailto:support@nextlevel.example">support@nextlevel.example</a><a href="about.html">About</a></div>
+  <footer class="home-footer">
+    <div class="home-shell footer-inner">
+      <div class="footer-columns">
+        <div class="footer-brand">
+          <a class="home-brand" href="./index.html">NextLevel</a>
+          <p>Discover. Explore. Save.</p>
+        </div>
+        <nav class="footer-group" aria-label="Explore">
+          <h2>Explore</h2>
+          <p class="footer-links"><a href="./games.html">Games</a> &nbsp;·&nbsp; <a href="./categories.html">Categories</a> &nbsp;·&nbsp; <a href="./favorites.html">Favorites</a></p>
+        </nav>
+        <div class="footer-group">
+          <h2>Contact</h2>
+          <a href="mailto:support@nextlevel.example">support@nextlevel.example</a>
+          <a href="./about.html">About</a>
+        </div>
+      </div>
+      <p class="footer-copyright">© <span data-year>2026</span> Nextlevel</p>
     </div>
   </footer>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="favorites.js"></script>
+  <script src="./vendor/bootstrap/bootstrap.bundle.min.js"></script>
+  <script type="module" src="./src/main.js"></script>
 </body>
 </html>

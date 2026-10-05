@@ -101,6 +101,9 @@ body.games-page {
     background: #fff;
     color: var(--gc-text);
 }
+.games-page .gc-header-search input:focus {
+    outline: 0;
+}
 .games-page .gc-main {
     padding-top: 48px;
     padding-bottom: 40px;

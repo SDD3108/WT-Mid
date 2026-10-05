@@ -3,52 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
   <link rel="stylesheet" href="./vendor/bootstrap/bootstrap.min.css" />
   <link rel="stylesheet" href="./src/style/global.css" />
   <title>Document</title>
+  <link rel="stylesheet" href="./src/style/layout.css" />
 </head>
-<body class="game-page">
-  <a class="visually-hidden-focusable" href="#game-content">
-    Skip to content
-  </a>
-  <header class="gd-header">
-    <nav class="navbar navbar-expand-lg gd-container" aria-label="Main navigation">
-      <a class="navbar-brand gd-logo" href="./index.html">
-        NextLevel
-      </a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#game-navigation"
-        aria-controls="game-navigation"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
+<body class="game-page" data-page="game">
+  <header class="home-header">
+    <nav class="navbar navbar-expand-lg home-shell" aria-label="Main navigation">
+      <a class="navbar-brand home-brand" href="./index.html">NextLevel</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+        data-bs-target="#home-navigation" aria-controls="home-navigation"
+        aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="game-navigation">
-        <ul class="navbar-nav gd-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="./index.html">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="./games.html" aria-current="location">Games</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="./categories.html">Categories</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="./favorites.html">Favorites</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="./about.html">About</a>
-          </li>
+      <div class="collapse navbar-collapse" id="home-navigation">
+        <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" data-nav="home" href="./index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" data-nav="games" href="./games.html">Games</a></li>
+            <li class="nav-item"><a class="nav-link" data-nav="categories" href="./categories.html">Categories</a></li>
+            <li class="nav-item"><a class="nav-link" data-nav="favorites" href="./favorites.html">Favorites</a></li>
+            <li class="nav-item"><a class="nav-link" data-nav="about" href="./about.html">About</a></li>
         </ul>
-        <form class="gd-header-search" action="./index.html" method="get" role="search">
-          <label class="visually-hidden" for="game-search">Search games</label>
-          <input id="game-search" name="q" type="search" placeholder="Search games..." maxlength="100">
+        <form class="header-search" role="search" action="./games.html" method="get" data-home-search>
+          <label class="visually-hidden" for="header-query">Search games</label>
+          <input id="header-query" name="q" type="search" placeholder="Search games…" maxlength="100" />
         </form>
       </div>
     </nav>
@@ -310,45 +289,28 @@
       </div>
     </section>
   </main>
-  <footer class="gd-footer">
-    <div class="gd-container gd-footer-inner">
-      <div class="gd-footer-columns">
-        <div class="gd-footer-brand">
-          <a class="gd-logo" href="./index.html">NextLevel</a>
+  <footer class="home-footer">
+    <div class="home-shell footer-inner">
+      <div class="footer-columns">
+        <div class="footer-brand">
+          <a class="home-brand" href="./index.html">NextLevel</a>
           <p>Discover. Explore. Save.</p>
         </div>
-  
-        <nav class="gd-footer-group" aria-label="Footer navigation">
+        <nav class="footer-group" aria-label="Explore">
           <h2>Explore</h2>
-  
-          <div class="gd-footer-links">
-            <a href="./games.html">Games</a>
-            <span aria-hidden="true">·</span>
-            <a href="./categories.html">Categories</a>
-            <span aria-hidden="true">·</span>
-            <a href="./favorites.html">Favorites</a>
-          </div>
+          <p class="footer-links"><a href="./games.html">Games</a> &nbsp;·&nbsp; <a href="./categories.html">Categories</a> &nbsp;·&nbsp; <a href="./favorites.html">Favorites</a></p>
         </nav>
-  
-        <div class="gd-footer-group">
+        <div class="footer-group">
           <h2>Contact</h2>
-  
-          <a href="mailto:hello@nextlevel.example">
-            hello@nextlevel.example
-          </a>
-  
+          <a href="mailto:support@nextlevel.example">support@nextlevel.example</a>
           <a href="./about.html">About</a>
         </div>
       </div>
-  
-      <p class="gd-copyright">
-        © <span id="game-year">2026</span> NextLevel
-      </p>
+      <p class="footer-copyright">© <span data-year>2026</span> Nextlevel</p>
     </div>
   </footer>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  <script type="module" src="./src/pages/game.js"></script>
   <script src="./vendor/bootstrap/bootstrap.bundle.min.js"></script>
   <script type="module" src="./src/main.js"></script>
-  <script type="module" src="./src/pages/game.js"></script>
 </body>
 </html>

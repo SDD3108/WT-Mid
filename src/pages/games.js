@@ -149,8 +149,8 @@ const PAGE_SIZE = 9;
 
 const searchForm = document.querySelector("#games-search");
 const searchInput = document.querySelector("#games-query");
-const headerSearchForm = document.querySelector("#games-header-search");
-const headerSearchInput = document.querySelector("#games-header-query");
+const headerSearchForm = document.querySelector(".home-header .header-search");
+const headerSearchInput = document.querySelector("#header-query");
 const filtersForm = document.querySelector("#games-filters");
 const sortSelect = document.querySelector("#games-sort");
 const gamesList = document.querySelector("#games-list");

@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-
+@import "./home.css";
 :root {
   --ink:#171717;
   --muted:#666; 
@@ -7,10 +7,10 @@
   --line:#c5c5c2; 
   --dark:#303030; 
 }
-
+/* 
 * {
   box-sizing:border-box;
-}
+} */
 
 body { 
   margin:0; 
