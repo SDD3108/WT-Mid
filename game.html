@@ -43,34 +43,32 @@
           <a href="./games.html">Games</a>
         </li>
   
-        <li aria-current="page">
+        <li id="game-breadcrumb" aria-current="page">
           Echoes of Aether
         </li>
       </ol>
     </nav>
-  
-    <!-- GAME HERO -->
     <section class="gd-hero" aria-labelledby="game-title">
       <div class="gd-placeholder gd-cover" aria-hidden="true"></div>
   
       <div class="gd-summary">
-        <p class="gd-eyebrow">ADVENTURE · RPG</p>
+        <p class="gd-eyebrow" id="game-genres">ADVENTURE · RPG</p>
         <h1 id="game-title">Echoes of Aether</h1>
         <div class="gd-rating">
           <span class="gd-rating-value">
             <span class="gd-star" aria-hidden="true">★</span>
-            <span aria-label="4.8 out of 5">4.8</span>
+            <span id="game-rating" aria-label="4.8 out of 5">4.8</span>
           </span>
   
           <span>1,284 ratings</span>
         </div>
   
-        <p class="gd-description">
+        <p class="gd-description" id="game-description">
           Explore a fractured sky realm, uncover forgotten histories,
           and shape a journey where every choice echoes through the world.
         </p>
   
-        <ul class="gd-platforms" aria-label="Available platforms">
+        <ul class="gd-platforms" id="game-platforms" aria-label="Available platforms">
           <li>PC</li>
           <li>PlayStation</li>
           <li>Xbox</li>
@@ -93,13 +91,11 @@
         </div>
       </div>
     </section>
-  
-    <!-- ABOUT + INFORMATION -->
     <section class="gd-details" aria-labelledby="about-game-title">
       <div class="gd-about">
         <h2 id="about-game-title">About this game</h2>
   
-        <p>
+        <p id="game-about">
           A story-led open-world adventure built around exploration,
           tactical encounters, and meaningful decisions. Travel between
           floating regions and restore the lost paths of Aether.
@@ -129,36 +125,35 @@
           <tbody>
             <tr>
               <th scope="row">Developer</th>
-              <td>Northlight Studio</td>
+              <td id="game-developer">Northlight Studio</td>
             </tr>
   
             <tr>
               <th scope="row">Publisher</th>
-              <td>Aether Works</td>
+              <td id="game-publisher">Aether Works</td>
             </tr>
   
             <tr>
               <th scope="row">Release</th>
               <td>
-                <time datetime="2026-03-14">March 14, 2026</time>
+                <time id="game-release" datetime="2026-03-14">March 14, 2026</time>
               </td>
             </tr>
   
             <tr>
               <th scope="row">Genres</th>
-              <td>Adventure, RPG</td>
+              <td id="game-information-genres">Adventure, RPG</td>
             </tr>
   
             <tr>
               <th scope="row">Modes</th>
-              <td>Single player</td>
+              <td id="game-modes">Single player</td>
             </tr>
           </tbody>
         </table>
       </aside>
     </section>
   
-    <!-- SCREENSHOTS -->
     <section class="gd-section" aria-labelledby="screenshots-title">
       <h2 id="screenshots-title">Screenshots</h2>
   
@@ -185,18 +180,12 @@
         </div>
       </div>
     </section>
-  
-    <!-- RELATED GAMES -->
     <section class="gd-section" aria-labelledby="related-title">
       <h2 id="related-title">Related games</h2>
   
       <div class="row gd-row">
         <article class="col-12 col-sm-6 col-lg-3">
-          <a
-            class="gd-card"
-            href="./games.html?q=Neon%20Drift"
-            aria-label="Find Neon Drift in the catalog"
-          >
+          <a class="gd-card" href="./games.html?q=Neon%20Drift" aria-label="Find Neon Drift in the catalog">
             <div
               class="gd-placeholder gd-card-image"
               aria-hidden="true"
