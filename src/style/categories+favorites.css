@@ -141,13 +141,16 @@ a { color:inherit; }
 
 .game-card { 
   min-width:0; 
-  padding:9px; 
+  padding:10px; 
   border:1px solid var(--line); 
   background:#fff; 
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .game-card h2,.game-card h3 { 
-  margin:9px 0 5px; 
+  margin:0; 
   font-size:.94rem; 
   font-weight:700; 
 }
@@ -166,6 +169,7 @@ a { color:inherit; }
   justify-content:space-between; 
   gap:8px; 
   color:#666; 
+  margin: 0;
   font-size:.68rem; 
 }
 
@@ -180,14 +184,14 @@ a { color:inherit; }
   margin-right:6px; 
 }
 
-.remove-button { 
-  margin-top:7px; 
+.remove-button {  
   padding:3px 8px; 
   border:1px solid #333; 
   background:white; 
   color:#111; 
   font-size:.68rem; 
   font-weight:600; 
+  align-self: flex-start;
 }
 
 .remove-button:hover { 
