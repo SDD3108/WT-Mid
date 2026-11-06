@@ -3,6 +3,7 @@ import {
 } from "../data/games.js";
 
 const STORAGE_KEY = "nextlevel:favorites";
+
 const params = new URLSearchParams(window.location.search);
 const gameId = params.get("id");
 const game = games.find((item) => item.id === gameId);
@@ -10,26 +11,6 @@ const game = games.find((item) => item.id === gameId);
 const gameContent = document.querySelector("#game-content");
 const favoriteButton = document.querySelector("#favorite-button");
 const favoriteFeedback = document.querySelector("#favorite-feedback");
-
-const cover = document.querySelector(".gd-cover");
-
-if (game.image && cover) {
-  cover.style.backgroundImage = `url("${game.image}")`;
-  cover.style.backgroundSize = "cover";
-  cover.style.backgroundPosition = "center";
-}
-
-const screenshotElements = document.querySelectorAll(".gd-screenshot");
-
-screenshotElements.forEach((element, index) => {
-    const screenshot = game.screenshots?.[index];
-
-    if (screenshot) {
-        element.style.backgroundImage = `url(${screenshot})`;
-        element.style.backgroundSize = "cover";
-        element.style.backgroundPosition = "center";
-    }
-});
 
 function readFavorites() {
     try {

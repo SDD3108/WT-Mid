@@ -12,14 +12,6 @@ const gamesCount = document.querySelector("#games-count");
 const emptyMessage = document.querySelector("#games-empty");
 const pagination = document.querySelector("#games-pagination");
 
-const artwork = fragment.querySelector(".gc-card-image");
-
-if (game.image) {
-  artwork.style.backgroundImage = `url("${game.image}")`;
-  artwork.style.backgroundSize = "cover";
-  artwork.style.backgroundPosition = "center";
-}
-
 const GAMES_PER_PAGE = 6;
 let currentPage = 1;
 
