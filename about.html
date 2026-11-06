@@ -141,7 +141,110 @@
           </li>
         </ol>
       </section>
+      
+      <section class="feedback-section" aria-labelledby="feedback-title">
+        <div class="feedback-heading">
+          <h2 id="feedback-title">Help us improve NextLevel</h2>
+          <p>Tell us what you think about your game discovery experience.</p>
+        </div>
 
+      <form id="feedback-form" novalidate>
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label for="feedback-name" class="form-label">Your name</label>
+            <input
+            type="text"
+            id="feedback-name"
+            name="name"
+            class="form-control"
+            minlength="2"
+            required
+            aria-describedby="name-error"
+            >
+
+            <p class="field-error" id="name-error"></p>
+          </div>
+
+          <div class="col-md-6">
+            <label for="feedback-email" class="form-label">
+              Email address
+            </label>
+            <input
+            type="email"
+            id="feedback-email"
+            name="email"
+            class="form-control"
+            required
+            aria-describedby="email-error"
+            >
+            <p class="field-error" id="email-error"></p>
+          </div>
+
+        <div class="col-md-6">
+          <label for="feedback-genre" class="form-label">
+            Favorite game genre
+          </label>
+          <select
+            id="feedback-genre"
+            name="genre"
+            class="form-select"
+            required
+            aria-describedby="genre-error"
+          >
+          <option value="">Choose a genre</option>
+          <option value="Action">Action</option>
+          <option value="Adventure">Adventure</option>
+          <option value="RPG">RPG</option>
+          <option value="Strategy">Strategy</option>
+          </select>
+          <p class="field-error" id="genre-error"></p>
+        </div>
+
+        <div class="col-md-6">
+          <label for="feedback-rating" class="form-label">
+            Rate NextLevel
+          </label>
+          <select
+            id="feedback-rating"
+            name="rating"
+            class="form-select"
+            required
+            aria-describedby="rating-error"
+          >
+          <option value="">Choose a rating</option>
+          <option value="1">1 - Poor</option>
+          <option value="2">2 - Fair</option>
+          <option value="3">3 - Good</option>
+          <option value="4">4 - Very good</option>
+          <option value="5">5 - Excellent</option>
+          </select>
+          <p class="field-error" id="rating-error"></p>
+        </div>
+        <div class="col-12">
+          <label for="feedback-message" class="form-label">Your feedback</label>
+
+          <textarea
+          id="feedback-message"
+          name="message"
+          class="form-control"
+          rows="5"
+          minlength="10"
+          maxlength="500"
+          required
+          aria-describedby="message-error"
+          placeholder="What do you like? What should we improve?"
+          ></textarea>
+          
+          <p class="field-error" id="message-error"></p>
+        </div>
+      
+        <div class="col-12">
+          <button type="submit" class="feedback-submit">SUBMIT FEEDBACK</button>
+        </div></div>
+        <p id="feedback-success" role="status"aria-live="polite" hidden></p>
+      </form>
+      </section>
+      
       <section class="closing-banner d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-4" aria-labelledby="closing-title">
         <div>
           <h2 id="closing-title">Your next favorite is out there.</h2>

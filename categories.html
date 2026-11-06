@@ -5,10 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Browse games by genre on NextLevel.">
   <title>Document</title>
-  <link rel="stylesheet" href="src/style/categories+favorites.css">
-  <link rel="stylesheet" href="./vendor/bootstrap/bootstrap.min.css" />
-  <link rel="stylesheet" href="./src/style/global.css" />
-  <link rel="stylesheet" href="./src/style/layout.css" />
+  <link rel="stylesheet" href="./vendor/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="./src/style/global.css">
+  <link rel="stylesheet" href="./src/style/layout.css">
+  <link rel="stylesheet" href="./src/style/categories+favorites.css">
+  <script type="module" src="./src/pages/categories.js"></script>
+  <script type="module" src="./src/main.js"></script>
 </head>
 <body data-page="categories">
   <header class="home-header">
@@ -51,7 +53,7 @@
           <div class="category-art art-action" role="img" aria-label="Abstract warm action game artwork"></div>
           <h2>Action</h2>
           <div class="category-meta">
-            <span>12 games</span>
+            <span class="category-count">Loading...</span>
             <span>Browse category <b aria-hidden="true">→</b></span>
           </div>
         </a>
@@ -60,7 +62,7 @@
           <div class="category-art art-adventure" role="img" aria-label="Abstract forest adventure artwork"></div>
           <h2>Adventure</h2>
           <div class="category-meta">
-            <span>17 games</span>
+            <span class="category-count">Loading...</span>
             <span>Browse category <b aria-hidden="true">→</b></span>
           </div>
         </a>
@@ -69,7 +71,7 @@
           <div class="category-art art-rpg" role="img" aria-label="Abstract fantasy role-playing artwork"></div>
           <h2>RPG</h2>
           <div class="category-meta">
-            <span>22 games</span>
+            <span class="category-count">Loading...</span>
             <span>Browse category <b aria-hidden="true">→</b></span>
           </div>
         </a>
@@ -78,25 +80,7 @@
           <div class="category-art art-strategy" role="img" aria-label="Abstract strategy game artwork"></div>
           <h2>Strategy</h2>
           <div class="category-meta">
-            <span>12 games</span>
-            <span>Browse category <b aria-hidden="true">→</b></span>
-          </div>
-        </a>
-
-        <a class="category-card" href="games.html?genre=sports">
-          <div class="category-art art-sports" role="img" aria-label="Abstract sports game artwork"></div>
-          <h2>Sports</h2>
-          <div class="category-meta">
-            <span>31 games</span>
-            <span>Browse category <b aria-hidden="true">→</b></span>
-          </div>
-        </a>
-
-        <a class="category-card" href="games.html?genre=simulation">
-          <div class="category-art art-simulation" role="img" aria-label="Abstract simulation game artwork"></div>
-          <h2>Simulation</h2>
-          <div class="category-meta">
-            <span>37 games</span>
+            <span class="category-count">Loading...</span>
             <span>Browse category <b aria-hidden="true">→</b></span>
           </div>
         </a>

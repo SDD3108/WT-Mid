@@ -7,10 +7,6 @@
   --line:#c5c5c2; 
   --dark:#303030; 
 }
-/* 
-* {
-  box-sizing:border-box;
-} */
 
 body { 
   margin:0; 
@@ -407,4 +403,43 @@ a {
   .footer-grid div:first-child {
     grid-column:1 / -1;
   }
+
+  .favorite-game-link {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .favorite-game-link:hover {
+    text-decoration: underline;
+  }
+
+  .favorite-game-link:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+  }
+
+  .category-card .art-action {
+    background-image: url("../../assets/images/action.png");
+  }
+
+  .category-card .art-adventure {
+    background-image: url("../../assets/images/adventure.png");
+  }
+
+  .category-card .art-rpg {
+    background-image: url("../../assets/images/rpg.png");
+  }
+
+  .category-card .art-strategy {
+    background-image: url("../../assets/images/strategy.png");
+  }
+
+  .category-card .category-art {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+
+
 }

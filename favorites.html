@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="./src/style/global.css" />
   <title>Document</title>
   <link rel="stylesheet" href="./src/style/layout.css" />
+  <script type="module" src="./src/pages/favorites.js"></script>
+  <script type="module" src="./src/main.js"></script>
 </head>
 
 <body data-page="favorites">
@@ -38,50 +40,11 @@
     <section aria-labelledby="page-title">
       <h1 id="page-title" class="page-title">Your favorites</h1>
       <p class="page-intro">
-        <span id="saved-count">4</span> saved games 
+        <span id="saved-count">0</span> saved games 
         <span aria-hidden="true">·</span> Keep a shortlist for your next play session.
       </p>
 
       <div class="game-grid" id="saved-games" aria-live="polite">
-        <article class="game-card" data-game="Echoes of Aether">
-          <div class="game-art game-art-1" role="img" aria-label="Mystical blue mountain landscape"></div>
-          <h2>Echoes of Aether</h2>
-          <div class="game-meta">
-            <span>Genre Platform</span>
-            <span class="rating"><b aria-hidden="true">★</b> 4.6</span>
-          </div>
-          <button class="remove-button" type="button">Remove</button>
-        </article>
-
-        <article class="game-card" data-game="Neon Drift">
-          <div class="game-art game-art-2" role="img" aria-label="Neon city at night"></div>
-          <h2>Neon Drift</h2>
-          <div class="game-meta">
-            <span>Genre Platform</span>
-            <span class="rating"><b aria-hidden="true">★</b> 4.6</span>
-          </div>
-          <button class="remove-button" type="button">Remove</button>
-        </article>
-
-        <article class="game-card" data-game="Wildwood">
-          <div class="game-art game-art-3" role="img" aria-label="Sunlit woodland scene"></div>
-          <h2>Wildwood</h2>
-          <div class="game-meta">
-            <span>Genre Platform</span>
-            <span class="rating"><b aria-hidden="true">★</b> 4.6</span>
-          </div>
-          <button class="remove-button" type="button">Remove</button>
-        </article>
-
-        <article class="game-card" data-game="Orbit Breaker">
-          <div class="game-art game-art-4" role="img" aria-label="Colorful planet in outer space"></div>
-          <h2>Orbit Breaker</h2>
-          <div class="game-meta">
-            <span>Genre Platform</span>
-            <span class="rating"><b aria-hidden="true">★</b> 4.6</span>
-          </div>
-          <button class="remove-button" type="button">Remove</button>
-        </article>
       </div>
 
       <p class="empty-state" id="empty-state" hidden>Your favorites list is empty. Add a game from the catalog to save it here.</p>

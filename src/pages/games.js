@@ -1,89 +1,246 @@
-import { games } from "../data/games.js";
-const STORAGE_KEY = "nextlevel:favorites";
-const params = new URLSearchParams(window.location.search);
-const gameId = params.get("id");
-const game = games.find((item) => item.id === gameId);
-const gameContent = document.querySelector("#game-content");
-const favoriteButton = document.querySelector("#favorite-button");
-const favoriteFeedback = document.querySelector("#favorite-feedback");
-const breadcrumb = document.querySelector("#game-breadcrumb");
-const title = document.querySelector("#game-title");
-const genres = document.querySelector("#game-genres");
-const rating = document.querySelector("#game-rating");
-const description = document.querySelector("#game-description");
-const platforms = document.querySelector("#game-platforms");
-const about = document.querySelector("#game-about");
+import {
+    games
+} from "../data/games.js";
 
-const developer = document.querySelector("#game-developer");
-const publisher = document.querySelector("#game-publisher");
-const release = document.querySelector("#game-release");
-const informationGenres = document.querySelector("#game-information-genres");
-const modes = document.querySelector("#game-modes");
+const gamesList = document.querySelector("#games-list");
+const cardTemplate = document.querySelector("#games-card-template");
+const searchForm = document.querySelector("#games-search");
+const searchInput = document.querySelector("#games-query");
+const filtersForm = document.querySelector("#games-filters");
+const sortSelect = document.querySelector("#games-sort");
+const gamesCount = document.querySelector("#games-count");
+const emptyMessage = document.querySelector("#games-empty");
+const pagination = document.querySelector("#games-pagination");
 
-if(game){
-    gameContent.dataset.gameId = game.id;
-    document.title = `${game.title} — NextLevel`;
-    breadcrumb.textContent = game.title;
+const artwork = fragment.querySelector(".gc-card-image");
+
+if (game.image) {
+  artwork.style.backgroundImage = `url("${game.image}")`;
+  artwork.style.backgroundSize = "cover";
+  artwork.style.backgroundPosition = "center";
+}
+
+const GAMES_PER_PAGE = 6;
+let currentPage = 1;
+
+function getSearchQuery() {
+    return searchInput.value.trim().toLowerCase();
+}
+
+function getSelectedValues(name) {
+    const checked = filtersForm.querySelectorAll(
+        `input[name="${name}"]:checked`
+    );
+
+    return Array.from(checked, (input) => input.value);
+}
+
+function filterGames() {
+    const query = getSearchQuery();
+    const genres = getSelectedValues("genre");
+    const platforms = getSelectedValues("platform");
+    const years = getSelectedValues("year");
+
+    const ratingInput = filtersForm.querySelector(
+        'input[name="rating"]:checked'
+    );
+
+    const minimumRating = ratingInput ?
+        Number(ratingInput.value) :
+        0;
+
+    return games.filter((game) => {
+        const searchableText = [
+            game.title,
+            game.description,
+            ...game.genres,
+            ...game.platforms
+        ].join(" ").toLowerCase();
+
+        const matchesSearch = searchableText.includes(query);
+
+        const matchesGenre =
+            genres.length === 0 ||
+            genres.some((genre) => game.genres.includes(genre));
+
+        const matchesPlatform =
+            platforms.length === 0 ||
+            platforms.some((platform) =>
+                game.platforms.includes(platform)
+            );
+
+        const matchesRating = game.rating >= minimumRating;
+
+        const matchesYear =
+            years.length === 0 ||
+            years.some((year) =>
+                year === "earlier" ?
+                game.year < 2025 :
+                game.year === Number(year)
+            );
+
+        return (
+            matchesSearch &&
+            matchesGenre &&
+            matchesPlatform &&
+            matchesRating &&
+            matchesYear
+        );
+    });
+}
+
+function sortGames(gameList) {
+    const sorted = [...gameList];
+
+    switch (sortSelect.value) {
+        case "rating":
+            return sorted.sort((a, b) => b.rating - a.rating);
+
+        case "newest":
+            return sorted.sort((a, b) => b.year - a.year);
+
+        case "title":
+            return sorted.sort((a, b) =>
+                a.title.localeCompare(b.title)
+            );
+
+        default:
+            return sorted;
+    }
+}
+
+function createGameCard(game) {
+    const fragment = cardTemplate.content.cloneNode(true);
+
+    const link = fragment.querySelector(".gc-card");
+    const title = fragment.querySelector(".gc-card-title");
+    const category = fragment.querySelector(".gc-card-category");
+    const rating = fragment.querySelector(".gc-card-score");
+
+    const image = fragment.querySelector(".gc-card-image");
+    image.style.backgroundImage = `url(${game.image})`;
+    image.style.backgroundSize = "cover";
+    image.style.backgroundPosition = "center";
+
+
+    link.href = `./game.html?id=${encodeURIComponent(game.id)}`;
     title.textContent = game.title;
-    genres.textContent = game.genres.join(" · ").toUpperCase();
+    category.textContent = game.genres.join(", ");
     rating.textContent = game.rating.toFixed(1);
-    rating.setAttribute("aria-label",`${game.rating.toFixed(1)} out of 5`)
-    description.textContent = game.description;
-    about.textContent = game.about;
-    platforms.replaceChildren();
 
-    game.platforms.forEach((platform)=>{
-        const item = document.createElement("li")
-        item.textContent = platform
-        platforms.append(item);
-    })
-    developer.textContent = game.developer
-    publisher.textContent = game.publisher
-    release.textContent = game.year
-    informationGenres.textContent = game.genres.join(", ")
-    modes.textContent = game.modes
-}
-else{
-    document.title = "Game not found — NextLevel"
-    title.textContent = "Game not found"
-    description.textContent = "The game you are looking for does not exist"
-    favoriteButton.hidden = true;
-}
-const readFavorites = () => {
-    const savedValue = localStorage.getItem(STORAGE_KEY)
-    const parsedValue = JSON.parse(savedValue)
-    return [...new Set(parsedValue.filter((id) => typeof id == "string"))]
+    return fragment;
 }
 
-const updateFavoriteButton = ()=>{
-    const favorites = readFavorites()
-    const isFavorite = favorites.includes(game.id)
+function renderPagination(totalGames) {
+    pagination.replaceChildren();
 
-    favoriteButton.textContent = isFavorite ? "REMOVE FROM FAVORITES" : "ADD TO FAVORITES"
-    favoriteButton.setAttribute("aria-pressed",String(isFavorite))
-}
-favoriteButton.addEventListener("click",()=>{
-    const favorites = readFavorites();
-    const isFavorite = favorites.includes(game.id);
-    let updatedFavorites;
+    const totalPages = Math.ceil(totalGames / GAMES_PER_PAGE);
 
-    if(isFavorite){
-        updatedFavorites = favorites.filter((id) => id !== game.id);
+    for (let page = 1; page <= totalPages; page++) {
+        const button = document.createElement("button");
+
+        button.type = "button";
+        button.textContent = page;
+        button.classList.add("page-button");
+
+        if (page === currentPage) {
+            button.classList.add("active");
+            button.setAttribute("aria-current", "page");
+        }
+
+        button.addEventListener("click", () => {
+            currentPage = page;
+            renderGames();
+            gamesList.scrollIntoView({
+                behavior: "smooth"
+            });
+        });
+
+        pagination.appendChild(button);
     }
-    else{
-        updatedFavorites = [...favorites,game.id];
-    }
-    localStorage.setItem(STORAGE_KEY,JSON.stringify(updatedFavorites))
-    updateFavoriteButton();
-    favoriteFeedback.textContent = isFavorite ? "Removed from your favorites" : "Added to your favorites"
+}
+
+function renderGames() {
+    const filtered = filterGames();
+    const sorted = sortGames(filtered);
+
+    const totalPages = Math.ceil(
+        sorted.length / GAMES_PER_PAGE
+    );
+
+    currentPage = Math.max(
+        1,
+        Math.min(currentPage, totalPages || 1)
+    );
+
+    const start = (currentPage - 1) * GAMES_PER_PAGE;
+    const visibleGames = sorted.slice(
+        start,
+        start + GAMES_PER_PAGE
+    );
+
+    gamesList.replaceChildren();
+
+    visibleGames.forEach((game) => {
+        gamesList.appendChild(createGameCard(game));
+    });
+
+    gamesCount.textContent =
+        `${filtered.length} game(s) found`;
+
+    emptyMessage.hidden = filtered.length !== 0;
+
+    renderPagination(filtered.length);
+}
+
+function updateResults() {
+    currentPage = 1;
+    renderGames();
+}
+
+searchForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    updateResults();
 });
 
-window.addEventListener("storage", (event) => {
-    if(event.key == STORAGE_KEY || event.key == null){
-        updateFavoriteButton()
-        favoriteFeedback.textContent = ""
-    }
-});
+searchInput.addEventListener("input", updateResults);
 
+filtersForm.addEventListener("change", updateResults);
 
-updateFavoriteButton();
+sortSelect.addEventListener("change", updateResults);
+
+function resetFilters() {
+    filtersForm.reset();
+    searchInput.value = "";
+    sortSelect.value = "popular";
+
+    updateResults();
+}
+
+document.querySelector("#games-reset")
+    .addEventListener("click", resetFilters);
+
+document.querySelector("#games-empty-reset")
+    .addEventListener("click", resetFilters);
+
+const params = new URLSearchParams(window.location.search);
+
+const initialQuery = params.get("q");
+const initialGenre = params.get("genre");
+
+if (initialQuery) {
+    searchInput.value = initialQuery;
+}
+
+if (initialGenre) {
+    const genreCheckboxes = filtersForm.querySelectorAll(
+        'input[name="genre"]'
+    );
+
+    genreCheckboxes.forEach((checkbox) => {
+        checkbox.checked =
+            checkbox.value.toLowerCase() === initialGenre.toLowerCase();
+    });
+}
+
+renderGames();

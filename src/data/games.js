@@ -12,7 +12,13 @@ export const games = [
       "Explore a fractured sky realm, uncover forgotten histories, and shape a journey where every choice echoes through the world.",
     about:
       "A story-led open-world adventure built around exploration, tactical encounters, and meaningful decisions.",
-    modes: "Single player"
+    modes: "Single player",
+    image: "./assets/images/games/echoes-of-aether.png",
+    screenshots: [
+    "./assets/images/games/echoes-of-aether-1.png",
+    "./assets/images/games/echoes-of-aether-2.png",
+    "./assets/images/games/echoes-of-aether-3.png"
+    ]
   },
   {
     id: "neon-drift",
@@ -27,7 +33,13 @@ export const games = [
       "Race through futuristic cities filled with neon streets, high-speed cars and challenging tracks.",
     about:
       "Neon Drift is a fast-paced racing and action game focused on speed, precision and futuristic environments.",
-    modes: "Single player, Multiplayer"
+    modes: "Single player, Multiplayer",
+    image: "./assets/images/games/neon-drift.png",
+    screenshots: [
+    "./assets/images/games/neon-drift-1.png",
+    "./assets/images/games/neon-drift-2.png",
+    "./assets/images/games/neon-drift-3.png"
+    ]
   },
   {
     id: "wildwood",
@@ -42,7 +54,13 @@ export const games = [
       "Explore a mysterious forest filled with hidden paths, ancient ruins and unusual creatures.",
     about:
       "Wildwood is an exploration-focused adventure game where players discover the secrets of a large handcrafted forest.",
-    modes: "Single player"
+    modes: "Single player",
+    image: "./assets/images/games/wildwood.png",
+    screenshots: [
+    "./assets/images/games/wildwood-1.png",
+    "./assets/images/games/wildwood-2.png",
+    "./assets/images/games/wildwood-3.png"
+    ]    
   },
   {
     id: "orbit-breaker",
@@ -57,7 +75,13 @@ export const games = [
       "Fight across dangerous planets and space stations in a fast-paced science-fiction adventure.",
     about:
       "Orbit Breaker combines action combat with exploration across multiple futuristic environments.",
-    modes: "Single player"
+    modes: "Single player",
+    image: "./assets/images/games/orbit-breaker.png",
+    screenshots: [
+    "./assets/images/games/orbit-breaker-1.png",
+    "./assets/images/games/orbit-breaker-2.png",
+    "./assets/images/games/orbit-breaker-3.png"
+    ] 
   },
   {
     id: "kingdom-tactics",
@@ -72,7 +96,14 @@ export const games = [
       "Build your army, manage your kingdom and defeat enemies using tactical decisions.",
     about:
       "Kingdom Tactics combines strategy and RPG mechanics with turn-based battles and kingdom management.",
-    modes: "Single player"
+    modes: "Single player",    
+    image: "./assets/images/games/kingdom-tactics.png",
+    screenshots: [
+    "./assets/images/games/kingdom-tactics-1.png",
+    "./assets/images/games/kingdom-tactics-2.png",
+    "./assets/images/games/kingdom-tactics-3.png"
+    ] 
+
   },
   {
     id: "summit-rally",
@@ -87,7 +118,13 @@ export const games = [
       "Race across mountains, snow-covered roads and dangerous off-road tracks.",
     about:
       "Summit Rally is an arcade racing game focused on challenging environments and fast vehicles.",
-    modes: "Single player, Multiplayer"
+    modes: "Single player, Multiplayer",
+    image: "./assets/images/games/summit-rally.png",
+    screenshots: [
+    "./assets/images/games/summit-rally-1.png",
+    "./assets/images/games/summit-rally-2.png",
+    "./assets/images/games/summit-rally-3.png"
+    ]     
   },
   {
     id: "moonlit-vale",
@@ -102,7 +139,13 @@ export const games = [
       "Travel through a mysterious valley under the moonlight and uncover its forgotten history.",
     about:
       "Moonlit Vale is a story-driven RPG adventure with exploration, quests and character progression.",
-    modes: "Single player"
+    modes: "Single player",
+    image: "./assets/images/games/moonlit-vale.png",
+    screenshots: [
+    "./assets/images/games/moonlit-vale-1.png",
+    "./assets/images/games/moonlit-vale-2.png",
+    "./assets/images/games/moonlit-vale-3.png"
+    ]      
   },
   {
     id: "pixel-quest",
@@ -117,7 +160,13 @@ export const games = [
       "Explore colorful pixel worlds, solve puzzles and discover hidden treasures.",
     about:
       "Pixel Quest is a retro-inspired adventure game with exploration and puzzle mechanics.",
-    modes: "Single player"
+    modes: "Single player",
+    image: "./assets/images/games/pixel-quest.png",
+    screenshots: [
+    "./assets/images/games/pixel-quest-1.png",
+    "./assets/images/games/pixel-quest-2.png",
+    "./assets/images/games/pixel-quest-3.png"
+    ]      
   },
   {
     id: "skybound",
@@ -132,7 +181,13 @@ export const games = [
       "Explore floating islands and travel across a massive open sky.",
     about:
       "Skybound is an exploration adventure focused on discovery and movement between floating worlds.",
-    modes: "Single player"
+    modes: "Single player",
+    image: "./assets/images/games/skybound.png",
+    screenshots: [
+    "./assets/images/games/skybound-1.png",
+    "./assets/images/games/skybound-2.png",
+    "./assets/images/games/skybound-3.png"
+    ]      
   },
   {
     id: "emberfall",
@@ -147,7 +202,13 @@ export const games = [
       "Fight dangerous creatures in a kingdom slowly being consumed by fire.",
     about:
       "Emberfall combines RPG progression with action combat in a dark fantasy world.",
-    modes: "Single player"
+    modes: "Single player",
+    image: "./assets/images/games/emberfall.png",
+    screenshots: [
+    "./assets/images/games/emberfall-1.png",
+    "./assets/images/games/emberfall-2.png",
+    "./assets/images/games/emberfall-3.png"
+    ]      
   },
   {
     id: "iron-frontier",
@@ -162,7 +223,13 @@ export const games = [
       "Build bases, manage resources and expand your territory.",
     about:
       "Iron Frontier is a strategy game focused on resource management and territorial expansion.",
-    modes: "Single player"
+    modes: "Single player",
+    image: "./assets/images/games/iron-frontier.png",
+    screenshots: [
+    "./assets/images/games/iron-frontier-1.png",
+    "./assets/images/games/iron-frontier-2.png",
+    "./assets/images/games/iron-frontier-3.png"
+    ]       
   },
   {
     id: "crystal-cove",
@@ -177,7 +244,13 @@ export const games = [
       "Explore tropical islands and uncover the mysteries hidden beneath the ocean.",
     about:
       "Crystal Cove is a mobile adventure focused on exploration and collecting.",
-    modes: "Single player"
+    modes: "Single player",
+    image: "./assets/images/games/crystal-cove.png",
+    screenshots: [
+    "./assets/images/games/crystal-cove-1.png",
+    "./assets/images/games/crystal-cove-2.png",
+    "./assets/images/games/crystal-cove-3.png"
+    ] 
   },
   {
     id: "shadow-circuit",
@@ -192,7 +265,13 @@ export const games = [
       "Enter a cyberpunk city and fight through dangerous underground networks.",
     about:
       "Shadow Circuit is a cyberpunk action game featuring fast combat and futuristic environments.",
-    modes: "Single player"
+    modes: "Single player",
+    image: "./assets/images/games/shadow-circuit.png",
+    screenshots: [
+    "./assets/images/games/shadow-circuit-1.png",
+    "./assets/images/games/shadow-circuit-2.png",
+    "./assets/images/games/shadow-circuit-3.png"
+    ]     
   },
   {
     id: "tiny-kingdoms",
@@ -207,7 +286,13 @@ export const games = [
       "Build and manage a small kingdom directly from your mobile device.",
     about:
       "Tiny Kingdoms is a lightweight strategy game focused on building and resource management.",
-    modes: "Single player"
+    modes: "Single player",
+    image: "./assets/images/games/tiny-kingdoms.png",
+    screenshots: [
+    "./assets/images/games/tiny-kingdoms-1.png",
+    "./assets/images/games/tiny-kingdoms-2.png",
+    "./assets/images/games/tiny-kingdoms-3.png"
+    ]   
   },
   {
     id: "astral-chronicles",
@@ -222,7 +307,13 @@ export const games = [
       "Travel between distant worlds and build a team of powerful heroes.",
     about:
       "Astral Chronicles is a science-fiction RPG focused on exploration and character progression.",
-    modes: "Single player"
+    modes: "Single player",
+    image: "./assets/images/games/astral-chronicles.png",
+    screenshots: [
+    "./assets/images/games/astral-chronicles-1.png",
+    "./assets/images/games/astral-chronicles-2.png",
+    "./assets/images/games/astral-chronicles-3.png"
+    ]       
   },
   {
     id: "forest-keepers",
@@ -237,7 +328,13 @@ export const games = [
       "Protect an ancient forest while managing resources and exploring its secrets.",
     about:
       "Forest Keepers combines strategy management with adventure exploration.",
-    modes: "Single player"
+    modes: "Single player",
+    image: "./assets/images/games/forest-keepers.png",
+    screenshots: [
+    "./assets/images/games/forest-keepers-1.png",
+    "./assets/images/games/forest-keepers-2.png",
+    "./assets/images/games/forest-keepers-3.png"
+    ]      
   },
   {
     id: "pocket-raiders",
@@ -252,7 +349,13 @@ export const games = [
       "Fight enemies, collect equipment and upgrade your character.",
     about:
       "Pocket Raiders is a mobile action RPG designed around short combat sessions.",
-    modes: "Single player"
+    modes: "Single player",
+    image: "./assets/images/games/pocket-raiders.png",
+    screenshots: [
+    "./assets/images/games/pocket-raiders-1.png",
+    "./assets/images/games/pocket-raiders-2.png",
+    "./assets/images/games/pocket-raiders-3.png"
+    ]        
   },
   {
     id: "frozen-horizon",
@@ -267,6 +370,12 @@ export const games = [
       "Survive and explore a vast frozen wilderness filled with abandoned settlements.",
     about:
       "Frozen Horizon is an atmospheric adventure game focused on exploration and survival.",
-    modes: "Single player"
+    modes: "Single player",
+    image: "./assets/images/games/frozen-horizon.png",
+    screenshots: [
+    "./assets/images/games/frozen-horizon-1.png",
+    "./assets/images/games/frozen-horizon-2.png",
+    "./assets/images/games/frozen-horizon-3.png"
+    ]          
   }
 ];
