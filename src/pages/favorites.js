@@ -12,7 +12,7 @@ function readFavorites() {
     try {
         const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
 
-        return Array.isArray(saved) ? [...new Set(saved.filter((id) => typeof id === "string"))] : [];
+        return Array.isArray(saved) ? [...new Set(saved.filter((id) => typeof id == "string"))] : [];
     } catch (error) {
         return [];
     }
@@ -80,7 +80,7 @@ function renderFavorites() {
     const favoriteIds = readFavorites();
 
     const favoriteGames = favoriteIds
-        .map((id) => games.find((game) => game.id === id))
+        .map((id) => games.find((game) => game.id == id))
         .filter(Boolean);
 
     savedGamesContainer.replaceChildren();
@@ -105,7 +105,7 @@ savedGamesContainer.addEventListener("click", (event) => {
 });
 
 window.addEventListener("storage", (event) => {
-    if (event.key === STORAGE_KEY || event.key === null) {
+    if (event.key == STORAGE_KEY || event.key == null) {
         renderFavorites();
     }
 });

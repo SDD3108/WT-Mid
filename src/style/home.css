@@ -1,19 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-@font-face {
-    font-family: "Inter", sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-}
 
-@font-face {
-    font-family: "Inter", sans-serif;
-    font-style: normal;
-    font-weight: 700;
-    font-display: swap;
-}
-
-/* Стили ограничены Home, чтобы остальные страницы каркаса не изменились. */
 .home-page {
     --home-muted: #6b6b6b;
     --home-artwork: #e8e8e6;

@@ -211,7 +211,7 @@ a {
 
 .favorites-note { 
   display:flex; 
-  justify-content:space-between; 
+  /* justify-content:space-between;  */
   gap:18px; 
   margin:32px 0 40px; 
   padding:18px 20px; 
@@ -419,19 +419,19 @@ a {
   }
 
   .category-card .art-action {
-    background-image: url("../../assets/images/action.png");
+    background-image: url("@/assets/images/action.png");
   }
 
   .category-card .art-adventure {
-    background-image: url("../../assets/images/adventure.png");
+    background-image: url("@/assets/images/adventure.png");
   }
 
   .category-card .art-rpg {
-    background-image: url("../../assets/images/rpg.png");
+    background-image: url("@/assets/images/rpg.png");
   }
 
   .category-card .art-strategy {
-    background-image: url("../../assets/images/strategy.png");
+    background-image: url("@/assets/images/strategy.png");
   }
 
   .category-card .category-art {

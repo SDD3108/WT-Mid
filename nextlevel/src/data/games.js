@@ -1,0 +1,216 @@
+export const games = [
+  {
+    id: 1,
+    title: "Echoes of Aether",
+    genre: ["Adventure", "RPG"],
+    platform: ["PC"],
+    rating: 4.6,
+    category: "featured",
+    href: "/games/1",
+    description:
+      "Explore a fractured sky realm, uncover forgotten histories, and shape a journey where every choice echoes through the world.",
+    about:
+      "A story-led open-world adventure built around exploration, tactical encounters, and meaningful decisions. Travel betweenfloating regions and restore the lost paths of Aether.",
+    features: [
+      "Expansive hand-crafted regions",
+      "Choice-driven quests and companions",
+      "Tactical real-time combat",
+      "30+ hours of exploration",
+    ],
+    developer: "Northlight Studio",
+    publisher: "Aether Works",
+    releaseDate: "2026-03-14",
+    releaseLabel: "March 14, 2026",
+    modes: "Single player",
+    ratingCount: 1284,
+    image_vertical: "@/assets/images/game1.jpg",
+    image_horizontal: "@/assets/images/game1_horizontal.jpg",
+    screenshots: [
+      "@/assets/images/game1_screenshot1.jpg",
+      "@/assets/images/game1_screenshot2.jpg",
+      "@/assets/images/game1_screenshot3.jpg",
+    ],
+  },
+  {
+    id: 2,
+    title: "Neon Drift",
+    genre: ["Racing"],
+    platform: ["PC"],
+    rating: 4.6,
+    category: "featured",
+    href: "/games/2",
+    description:
+      "Race through neon-lit cities, master sharp turns, and compete in high-speed challenges.",
+    about:
+      "Neon Drift is an arcade racing experience featuring futuristic vehicles, challenging tracks, and fast-paced competition.",
+    features: [
+      "Futuristic racing tracks",
+      "Vehicle customization",
+      "Time trials and racing challenges",
+    ],
+    modes: "Single player",
+    image_vertical: "@/assets/images/game2.jpg",
+    image_horizontal: "@/assets/images/game2_horizontal.jpg",
+    screenshots: [
+      "@/assets/images/game2_screenshot1.jpg",
+      "@/assets/images/game2_screenshot2.jpg",
+      "@/assets/images/game2_screenshot3.jpg",
+    ],
+  },
+  {
+    id: 3,
+    title: "Wildwood",
+    genre: ["Adventure", "Indie"],
+    platform: ["PC"],
+    rating: 4.6,
+    category: "featured",
+    href: "/games/3",
+    description:
+      "Explore mysterious forests and discover the secrets hidden deep within Wildwood.",
+    about:
+      "Wildwood is an indie adventure focused on exploration, environmental puzzles, and discovering a mysterious natural world.",
+    features: [
+      "Beautiful forest environments",
+      "Exploration and puzzles",
+      "Hidden secrets and collectibles",
+    ],
+    modes: "Single player",
+    image_vertical: "@/assets/images/game3.jpg",
+    image_horizontal: "@/assets/images/game3_horizontal.jpg",
+    screenshots: [
+      "@/assets/images/game3_screenshot1.jpg",
+      "@/assets/images/game3_screenshot2.jpg",
+      "@/assets/images/game3_screenshot3.jpg",
+    ],
+  },
+  {
+    id: 4,
+    title: "Orbit Breaker",
+    genre: ["Action"],
+    platform: ["PC"],
+    rating: 4.6,
+    category: "featured",
+    href: "/games/4",
+    description:
+      "Fight your way through dangerous space environments in an action-packed adventure.",
+    about:
+      "Orbit Breaker combines fast-paced action with space exploration and challenging encounters.",
+    features: [
+      "Fast-paced combat",
+      "Space environments",
+      "Challenging enemies and missions",
+    ],
+    modes: "Single player",
+    image_vertical: "@/assets/images/game4.jpg",
+    image_horizontal: "@/assets/images/game4_horizontal.jpg",
+    screenshots: [
+      "@/assets/images/game4_screenshot1.jpg",
+      "@/assets/images/game4_screenshot2.jpg",
+      "@/assets/images/game4_screenshot3.jpg",
+    ],
+  },
+  {
+    id: 5,
+    title: "Kingdom Tactics",
+    genre: ["Strategy"],
+    platform: ["PC"],
+    rating: 4.6,
+    category: "trending",
+    href: "/games/5",
+    description:
+      "Build your kingdom, command armies, and develop strategies to defeat your opponents.",
+    about:
+      "Kingdom Tactics is a strategy game where planning, resource management, and tactical decisions determine your success.",
+    features: [
+      "Tactical battles",
+      "Kingdom development",
+      "Resource management",
+    ],
+    modes: "Single player",
+    image_vertical: "@/assets/images/game5.jpg",
+    image_horizontal: "@/assets/images/game5_horizontal.jpg",
+    screenshots: [
+      "@/assets/images/game5_screenshot1.jpg",
+      "@/assets/images/game5_screenshot2.jpg",
+      "@/assets/images/game5_screenshot3.jpg",
+    ],
+  },
+  {
+    id: 6,
+    title: "Summit Rally",
+    genre: ["Racing"],
+    platform: ["PC"],
+    rating: 4.6,
+    category: "trending",
+    href: "/games/6",
+    description:
+      "Take on challenging rally tracks across mountains, forests, and rugged terrain.",
+    about:
+      "Summit Rally is a racing game focused on precision driving, challenging environments, and mastering difficult tracks.",
+    features: [
+      "Multiple racing environments",
+      "Challenging rally tracks",
+      "Time trial competitions",
+    ],
+    modes: "Single player",
+    image_vertical: "@/assets/images/game6.jpg",
+    image_horizontal: "@/assets/images/game6_horizontal.jpg",
+    screenshots: [
+      "@/assets/images/game6_screenshot1.jpg",
+      "@/assets/images/game6_screenshot2.jpg",
+      "@/assets/images/game6_screenshot3.jpg",
+    ],
+  },
+  {
+    id: 7,
+    title: "Moonlit Vale",
+    genre: ["RPG", "Indie"],
+    platform: ["PC"],
+    rating: 4.6,
+    category: "trending",
+    href: "/games/7",
+    description:
+      "Enter a mysterious fantasy world filled with magic, ancient legends, and unforgettable adventures.",
+    about:
+      "Moonlit Vale is an indie RPG featuring exploration, character development, and a story set in a magical world.",
+    features: [
+      "Fantasy world exploration",
+      "Character progression",
+      "Story-driven quests",
+    ],
+    modes: "Single player",
+    image_vertical: "@/assets/images/game7.jpg",
+    image_horizontal: "@/assets/images/game7_horizontal.jpg",
+    screenshots: [
+      "@/assets/images/game7_screenshot1.jpg",
+      "@/assets/images/game7_screenshot2.jpg",
+      "@/assets/images/game7_screenshot3.jpg",
+    ],
+  },
+  {
+    id: 8,
+    title: "Pixel Quest",
+    genre: ["Adventure", "Indie"],
+    platform: ["PC"],
+    rating: 4.6,
+    category: "trending",
+    href: "/games/8",
+    description:
+      "Explore colorful pixel worlds, overcome obstacles, and discover hidden treasures.",
+    about:
+      "Pixel Quest is an indie adventure featuring retro-inspired visuals, creative levels, and classic exploration gameplay.",
+    features: [
+      "Retro pixel-art environments",
+      "Creative levels and challenges",
+      "Hidden items and secrets",
+    ],
+    modes: "Single player",
+    image_vertical: "@/assets/images/game8.jpg",
+    image_horizontal: "@/assets/images/game8_horizontal.jpg",
+    screenshots: [
+      "@/assets/images/game8_screenshot1.jpg",
+      "@/assets/images/game8_screenshot2.jpg",
+      "@/assets/images/game8_screenshot3.jpg",
+    ],
+  },
+];

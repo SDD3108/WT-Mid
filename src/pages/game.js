@@ -6,7 +6,7 @@ const STORAGE_KEY = "nextlevel:favorites";
 
 const params = new URLSearchParams(window.location.search);
 const gameId = params.get("id");
-const game = games.find((item) => item.id === gameId);
+const game = games.find((item) => item.id == gameId);
 
 const gameContent = document.querySelector("#game-content");
 const favoriteButton = document.querySelector("#favorite-button");
@@ -17,7 +17,7 @@ function readFavorites() {
         const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
 
         return Array.isArray(saved) ?
-            [...new Set(saved.filter((id) => typeof id === "string"))] :
+            [...new Set(saved.filter((id) => typeof id == "string"))] :
             [];
     } catch (error) {
         return [];
@@ -101,7 +101,7 @@ if (game) {
     favoriteButton.addEventListener("click", toggleFavorite);
 
     window.addEventListener("storage", (event) => {
-        if (event.key === STORAGE_KEY || event.key === null) {
+        if (event.key == STORAGE_KEY || event.key == null) {
             updateFavoriteButton();
             favoriteFeedback.textContent = "";
         }

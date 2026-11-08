@@ -8,7 +8,7 @@ function countGamesByGenre(genre) {
     return games.filter((game) =>
         game.genres.some(
             (gameGenre) =>
-            gameGenre.toLowerCase() === genre.toLowerCase()
+            gameGenre.toLowerCase() == genre.toLowerCase()
         )
     ).length;
 }
@@ -25,8 +25,7 @@ function displayCategoryCounts() {
         const genre = title.textContent.trim();
         const count = countGamesByGenre(genre);
 
-        countElement.textContent =
-            `${count} ${count === 1 ? "game" : "games"}`;
+        countElement.textContent = `${count} ${count == 1 ? "game" : "games"}`
     });
 }
 

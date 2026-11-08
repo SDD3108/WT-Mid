@@ -42,35 +42,18 @@ function filterGames() {
         0;
 
     return games.filter((game) => {
-        const searchableText = [
+        const searchableText = 
+        [
             game.title,
             game.description,
             ...game.genres,
             ...game.platforms
         ].join(" ").toLowerCase();
-
         const matchesSearch = searchableText.includes(query);
-
-        const matchesGenre =
-            genres.length === 0 ||
-            genres.some((genre) => game.genres.includes(genre));
-
-        const matchesPlatform =
-            platforms.length === 0 ||
-            platforms.some((platform) =>
-                game.platforms.includes(platform)
-            );
-
+        const matchesGenre = genres.length == 0 || genres.some((genre) => game.genres.includes(genre));
+        const matchesPlatform = platforms.length == 0 || platforms.some((platform) => game.platforms.includes(platform));
         const matchesRating = game.rating >= minimumRating;
-
-        const matchesYear =
-            years.length === 0 ||
-            years.some((year) =>
-                year === "earlier" ?
-                game.year < 2025 :
-                game.year === Number(year)
-            );
-
+        const matchesYear = years.length == 0 || years.some((year) => year == "earlier" ? game.year < 2025 : game.year == Number(year));
         return (
             matchesSearch &&
             matchesGenre &&
@@ -81,39 +64,33 @@ function filterGames() {
     });
 }
 
-function sortGames(gameList) {
+const sortGames = (gameList)=>{
     const sorted = [...gameList];
-
     switch (sortSelect.value) {
         case "rating":
             return sorted.sort((a, b) => b.rating - a.rating);
-
         case "newest":
             return sorted.sort((a, b) => b.year - a.year);
-
         case "title":
             return sorted.sort((a, b) =>
                 a.title.localeCompare(b.title)
             );
-
         default:
             return sorted;
     }
 }
 
-function createGameCard(game) {
+const createGameCard = (game)=>{
     const fragment = cardTemplate.content.cloneNode(true);
-
     const link = fragment.querySelector(".gc-card");
     const title = fragment.querySelector(".gc-card-title");
     const category = fragment.querySelector(".gc-card-category");
     const rating = fragment.querySelector(".gc-card-score");
-
     const image = fragment.querySelector(".gc-card-image");
+
     image.style.backgroundImage = `url(${game.image})`;
     image.style.backgroundSize = "cover";
     image.style.backgroundPosition = "center";
-
 
     link.href = `./game.html?id=${encodeURIComponent(game.id)}`;
     title.textContent = game.title;
@@ -123,65 +100,45 @@ function createGameCard(game) {
     return fragment;
 }
 
-function renderPagination(totalGames) {
+const renderPagination =(totalGames)=>{
     pagination.replaceChildren();
-
     const totalPages = Math.ceil(totalGames / GAMES_PER_PAGE);
 
-    for (let page = 1; page <= totalPages; page++) {
+    for(let page = 1; page <= totalPages; page++){
         const button = document.createElement("button");
-
         button.type = "button";
         button.textContent = page;
         button.classList.add("page-button");
 
-        if (page === currentPage) {
+        if(page == currentPage){
             button.classList.add("active");
             button.setAttribute("aria-current", "page");
         }
-
-        button.addEventListener("click", () => {
+        button.addEventListener("click", ()=>{
             currentPage = page;
             renderGames();
-            gamesList.scrollIntoView({
-                behavior: "smooth"
-            });
+            gamesList.scrollIntoView({behavior: "smooth"});
         });
 
         pagination.appendChild(button);
     }
 }
 
-function renderGames() {
+const renderGames= ()=>{
     const filtered = filterGames();
     const sorted = sortGames(filtered);
-
-    const totalPages = Math.ceil(
-        sorted.length / GAMES_PER_PAGE
-    );
-
-    currentPage = Math.max(
-        1,
-        Math.min(currentPage, totalPages || 1)
-    );
-
+    const totalPages = Math.ceil(sorted.length / GAMES_PER_PAGE);
+    currentPage = Math.max(1,Math.min(currentPage, totalPages || 1));
     const start = (currentPage - 1) * GAMES_PER_PAGE;
-    const visibleGames = sorted.slice(
-        start,
-        start + GAMES_PER_PAGE
-    );
+    const visibleGames = sorted.slice(start,start + GAMES_PER_PAGE);
 
     gamesList.replaceChildren();
-
     visibleGames.forEach((game) => {
         gamesList.appendChild(createGameCard(game));
     });
 
-    gamesCount.textContent =
-        `${filtered.length} game(s) found`;
-
+    gamesCount.textContent = `${filtered.length} game(s) found`
     emptyMessage.hidden = filtered.length !== 0;
-
     renderPagination(filtered.length);
 }
 
@@ -230,8 +187,7 @@ if (initialGenre) {
     );
 
     genreCheckboxes.forEach((checkbox) => {
-        checkbox.checked =
-            checkbox.value.toLowerCase() === initialGenre.toLowerCase();
+        checkbox.checked = checkbox.value.toLowerCase() == initialGenre.toLowerCase();
     });
 }
 

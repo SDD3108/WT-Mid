@@ -97,7 +97,7 @@ function validateForm() {
 }
 
 Object.entries(fields).forEach(([fieldName, field]) => {
-    const eventType = field.tagName === "SELECT" ? "change" : "input";
+    const eventType = field.tagName == "SELECT" ? "change" : "input";
 
     field.addEventListener(eventType, () => {
         validateField(fieldName);
