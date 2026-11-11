@@ -76,11 +76,11 @@ export const games = [
     ],
     modes: "Single player",
     image_vertical: "@/assets/images/ori.png",
-    image_horizontal: "@/assets/images/ori-h-cover.jpg",
+    image_horizontal: "@/assets/images/ori-h-cover.png",
     screenshots: [
-      "@/assets/images/ori-screenshot1.jpg",
-      "@/assets/images/ori-screenshot2.jpg",
-      "@/assets/images/ori-screenshot3.jpg",
+      "@/assets/images/ori-screenshot1.png",
+      "@/assets/images/ori-screenshot2.png",
+      "@/assets/images/ori-screenshot3.png",
     ],
   },
   {
@@ -154,7 +154,7 @@ export const games = [
     ],
     modes: "Single player",
     image_vertical: "@/assets/images/wrc.png",
-    image_horizontal: "@/assets/images/wrrc-h-cover.png",
+    image_horizontal: "@/assets/images/wrc-h-cover.png",
     screenshots: [
       "@/assets/images/wrc-screenshot1.png",
       "@/assets/images/wrc-screenshot2.png",
