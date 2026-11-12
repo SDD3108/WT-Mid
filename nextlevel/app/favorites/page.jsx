@@ -24,7 +24,6 @@ export default function FavoritesPage() {
   const readFavorites = ()=>{
     const stored = JSON.parse(localStorage.getItem("favoriteGames") || "[]");
     return Array.isArray(stored) ? stored : [];
-
   }
   
   const GameCard = ({ game, onRemove })=>{

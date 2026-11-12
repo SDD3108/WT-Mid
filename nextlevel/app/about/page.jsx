@@ -7,37 +7,34 @@ import Footer from "@/src/common/footer/footer";
 import "@/app/styles/about.css";
 import "@/app/styles/feedback-fix.css";
 
-const featuredGameId = 1;
-
-const readStoredFavorites = ()=>{
-  const value = JSON.parse(localStorage.getItem("favoriteGames") || "[]");
-  return Array.isArray(value) ? value : [];
-}
-
-const validateFeedback = (values)=>{
-  const errors = {};
-  if(values.name.trim().length < 2){
-    errors.name = "Enter at least 2 characters.";
-  }
-  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email.trim())){
-    errors.email = "Enter a valid email address.";
-  }
-  if(!["Action", "Adventure", "RPG", "Strategy"].includes(values.genre)){
-    errors.genre = "Choose a genre.";
-  }
-  if(!["1", "2", "3", "4", "5"].includes(values.rating)){
-    errors.rating = "Choose a rating.";
-  }
-  if(values.message.trim().length < 10 || values.message.trim().length > 500){
-    errors.message = "Write between 10 and 500 characters.";
-  }
-  return errors;
-}
-
 export default function AboutPage(){
   const [isFavorite, setIsFavorite] = useState(false);
   const [errors, setErrors] = useState({});
   const [feedbackStatus, setFeedbackStatus] = useState("");
+  const featuredGameId = 1;
+  const readStoredFavorites = ()=>{
+    const value = JSON.parse(localStorage.getItem("favoriteGames") || "[]");
+    return Array.isArray(value) ? value : [];
+  }
+  const validateFeedback = (values)=>{
+    const errors = {};
+    if(values.name.trim().length < 2){
+      errors.name = "Enter at least 2 characters.";
+    }
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email.trim())){
+      errors.email = "Enter a valid email address.";
+    }
+    if(!["Action", "Adventure", "RPG", "Strategy"].includes(values.genre)){
+      errors.genre = "Choose a genre.";
+    }
+    if(!["1", "2", "3", "4", "5"].includes(values.rating)){
+      errors.rating = "Choose a rating.";
+    }
+    if(values.message.trim().length < 10 || values.message.trim().length > 500){
+      errors.message = "Write between 10 and 500 characters.";
+    }
+    return errors;
+  }
 
   useEffect(() => {
     setIsFavorite(readStoredFavorites().some((id) => String(id) === String(featuredGameId)));
@@ -45,7 +42,7 @@ export default function AboutPage(){
 
   const toggleFavorite = ()=>{
     const current = readStoredFavorites();
-    const exists = current.some((id) => String(id) === String(featuredGameId));
+    const exists = current.some((id) => String(id) == String(featuredGameId));
     const updated = exists ? current.filter((id) => String(id) !== String(featuredGameId)) : [...current, featuredGameId];
     localStorage.setItem("favoriteGames", JSON.stringify(updated));
     setIsFavorite(!exists);
