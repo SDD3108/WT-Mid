@@ -7,6 +7,7 @@ import Footer from "@/src/common/footer/footer";
 import { useGames } from "@/src/hooks/useGames";
 import { apiFetch } from "@/src/lib/api";
 import GameCollection from "@/src/models/GameCollection";
+import { saveCollections } from "@/src/utils/collectionStorage.js";
 import "@/app/styles/collections.css";
 
 function createCollections(saved = { want: [], completed: [] }) {
@@ -22,10 +23,24 @@ export default function CollectionsPage() {
   const [loaded, setLoaded] = useState(false);
   const [storageError, setStorageError] = useState("");
 
+  function applyCollections(data) {
+    setCollections(createCollections(data));
+    // MongoDB is the source of truth. Mirror successful responses so the
+    // localStorage-based dashboard reflects changes without a page refresh.
+    if (!saveCollections(data)) {
+      setStorageError("Collections were updated in MongoDB but could not be cached in browser storage.");
+    } else {
+      setStorageError("");
+    }
+  }
+
   useEffect(() => {
     let active = true;
     apiFetch("/collections")
-      .then((data) => { if (active) setCollections(createCollections(data)); })
+      .then((data) => { if (active) {
+        setCollections(createCollections(data));
+        if (!saveCollections(data)) setStorageError("Could not cache collections in browser storage.");
+      } })
       .catch((err) => { if (active) setStorageError(err.message); })
       .finally(() => { if (active) setLoaded(true); });
     return () => { active = false; };
@@ -37,8 +52,7 @@ export default function CollectionsPage() {
       const updated = await apiFetch(`/collections/${collectionKey}/${gameId}`, {
         method: added ? "DELETE" : "POST",
       });
-      setCollections(createCollections(updated));
-      setStorageError("");
+      applyCollections(updated);
     } catch (err) {
       setStorageError(err.message);
     }
@@ -50,8 +64,7 @@ export default function CollectionsPage() {
     if (!window.confirm(`Clear all games from "${collection.name}"?`)) return;
     try {
       const updated = await apiFetch(`/collections/${collectionKey}`, { method: "DELETE" });
-      setCollections(createCollections(updated));
-      setStorageError("");
+      applyCollections(updated);
     } catch (err) {
       setStorageError(err.message);
     }
@@ -63,7 +76,7 @@ export default function CollectionsPage() {
       <main className="container collections-main">
         <div className="collections-heading">
           <h1>My Game Collections</h1>
-          <p>Keep track of games you're planning to play and adventures you've already completed. Your collections are saved in MongoDB.</p>
+          <p>Keep track of games you&apos;re planning to play and adventures you&apos;ve already completed. Collections are saved in MongoDB and cached for your dashboard.</p>
         </div>
         {(storageError || gamesError) && <p role="alert" className="alert alert-danger">{storageError || gamesError}</p>}
         {!loaded || gamesLoading ? (
