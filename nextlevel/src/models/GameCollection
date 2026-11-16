@@ -1,0 +1,40 @@
+
+export default class GameCollection {
+  constructor(name, gameIds = []) {
+    this.name = name;
+    this.gameIds = [...gameIds];
+  }
+
+  addGame(gameId) {
+    if (this.hasGame(gameId)) {
+      return false;
+    }
+
+    this.gameIds.push(gameId);
+    return true;
+  }
+
+  removeGame(gameId) {
+    this.gameIds = this.gameIds.filter(
+      (id) => id !== gameId
+    );
+  }
+
+  hasGame(gameId) {
+    return this.gameIds.includes(gameId);
+  }
+
+  getGames(allGames) {
+    return allGames.filter((game) =>
+      this.hasGame(game.id)
+    );
+  }
+
+  getCount() {
+    return this.gameIds.length;
+  }
+
+  clear() {
+    this.gameIds = [];
+  }
+}

@@ -12,10 +12,14 @@ const Header = () => {
   const links = [
     { name: "Home", href: "/", key: "home" },
     { name: "Games", href: "/games", key: "games" },
+    { name: "Deals", href: "/deals", key: "deals" },
     { name: "Categories", href: "/categories", key: "categories" },
     { name: "Favorites", href: "/favorites", key: "favorites" },
+    { name: "Collections", href: "/collections", key: "collections" },
     { name: "About", href: "/about", key: "about" },
   ];
+
+
 
   return (
     <header className="home-header">
