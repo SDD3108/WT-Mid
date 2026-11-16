@@ -26,7 +26,7 @@ const GamesCatalog = ()=>{
     event.currentTarget.onerror = null;
     event.currentTarget.src = defaultImage;
   }
-  const canonicalGenre = genres.find((item) => item.toLowerCase() === urlGenre.trim().toLowerCase()) || "";
+  const canonicalGenre = genres.find((item) => item.toLowerCase() == urlGenre.trim().toLowerCase()) || "";
 
   const [search, setSearch] = useState(urlSearch);
   const [genre, setGenre] = useState(canonicalGenre);
@@ -49,11 +49,11 @@ const GamesCatalog = ()=>{
         ...game.genre,
         ...game.platform,
       ].some((value) => value?.toLowerCase().includes(query));
-      const matchesGenre = !genre || game.genre.some((item) => item.toLowerCase() === genre.toLowerCase());
+      const matchesGenre = !genre || game.genre.some((item) => item.toLowerCase() == genre.toLowerCase());
       const matchesPlatform = !platform || game.platform.includes(platform);
       const releaseYear = Number(game.releaseDate?.slice(0, 4));
       const matchesYear = year === "all" ||
-        (year === "earlier" ? releaseYear > 0 && releaseYear < 2025 : releaseYear === Number(year));
+        (year === "earlier" ? releaseYear > 0 && releaseYear < 2025 : releaseYear == Number(year));
 
       return matchesSearch && matchesGenre && matchesPlatform && game.rating >= rating && matchesYear;
     })

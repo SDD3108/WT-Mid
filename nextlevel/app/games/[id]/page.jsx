@@ -38,7 +38,6 @@ const GameContent = ()=>{
     }))
     .sort((a, b) => b.matches - a.matches)
     .slice(0, 4);
-
   const AddToFavorites = ()=>{
     const updatedFavorites = isFavorite ? favoriteGames.filter((id) => String(id) !== String(game.id)) : [...favoriteGames, game.id];
   
