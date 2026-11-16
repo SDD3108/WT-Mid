@@ -4,13 +4,16 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Header from "@/src/common/header/header";
 import Footer from "@/src/common/footer/footer";
+import AddGameForm from "@/src/components/AddGameForm";
 import "@/app/styles/about.css";
 import "@/app/styles/feedback-fix.css";
+import "@/app/styles/add-game.css";
 
 export default function AboutPage(){
   const [isFavorite, setIsFavorite] = useState(false);
   const [errors, setErrors] = useState({});
   const [feedbackStatus, setFeedbackStatus] = useState("");
+  const [activeForm, setActiveForm] = useState("feedback");
   const featuredGameId = 1;
   const readStoredFavorites = ()=>{
     const value = JSON.parse(localStorage.getItem("favoriteGames") || "[]");
@@ -130,42 +133,52 @@ export default function AboutPage(){
             </ol>
           </section>
           <section className="feedback-section" aria-labelledby="feedback-title">
-            <div className="feedback-heading"><h2 id="feedback-title">Help us improve NextLevel</h2><p>Tell us what you think about your game discovery experience.</p></div>
-            <form id="feedback-form" noValidate onSubmit={handleFeedbackSubmit}>
-              <div className="row g-3">
-                <div className="col-md-6">
-                  <label className="form-label" htmlFor="feedback-name">Your name</label>
-                  <input type="text" id="feedback-name" name="name" className={`form-control ${errors.name ? "is-invalid" : ""}`} minLength={2} required aria-invalid={!!errors.name} aria-describedby="name-error" />
-                  <p className="field-error" id="name-error">{errors.name}</p>
+            <div className="feedback-heading">
+              <h2 id="feedback-title">{activeForm === "feedback" ? "Help us improve NextLevel" : "Add your own game"}</h2>
+              <p>{activeForm === "feedback" ? "Tell us what you think about your game discovery experience." : "Fill in the details, upload artwork, and publish a game to the MongoDB catalog."}</p>
+            </div>
+            <div className="feedback-form-tabs" aria-label="Choose a form">
+              <button type="button" className="feedback-form-tab" aria-pressed={activeForm === "feedback"} onClick={() => setActiveForm("feedback")}>Feedback form</button>
+              <button type="button" className="feedback-form-tab" aria-pressed={activeForm === "add-game"} onClick={() => setActiveForm("add-game")}>Add game</button>
+            </div>
+            {activeForm === "feedback" && (
+              <form id="feedback-form" noValidate onSubmit={handleFeedbackSubmit}>
+                <div className="row g-3">
+                  <div className="col-md-6">
+                    <label className="form-label" htmlFor="feedback-name">Your name</label>
+                    <input type="text" id="feedback-name" name="name" className={`form-control ${errors.name ? "is-invalid" : ""}`} minLength={2} required aria-invalid={!!errors.name} aria-describedby="name-error" />
+                    <p className="field-error" id="name-error">{errors.name}</p>
+                  </div>
+                  <div className="col-md-6">
+                    <label className="form-label" htmlFor="feedback-email">Email address</label>
+                    <input type="email" id="feedback-email" name="email" className={`form-control ${errors.email ? "is-invalid" : ""}`} required aria-invalid={!!errors.email} aria-describedby="email-error" />
+                    <p className="field-error" id="email-error">{errors.email}</p>
+                  </div>
+                  <div className="col-md-6">
+                    <label className="form-label" htmlFor="feedback-genre">Favorite game genre</label>
+                    <select id="feedback-genre" name="genre" className={`form-select ${errors.genre ? "is-invalid" : ""}`} required aria-invalid={!!errors.genre} aria-describedby="genre-error">
+                      <option value="">Choose a genre</option><option value="Action">Action</option><option value="Adventure">Adventure</option><option value="RPG">RPG</option><option value="Strategy">Strategy</option>
+                    </select>
+                    <p className="field-error" id="genre-error">{errors.genre}</p>
+                  </div>
+                  <div className="col-md-6">
+                    <label className="form-label" htmlFor="feedback-rating">Rate NextLevel</label>
+                    <select id="feedback-rating" name="rating" className={`form-select ${errors.rating ? "is-invalid" : ""}`} required aria-invalid={!!errors.rating} aria-describedby="rating-error">
+                      <option value="">Choose a rating</option><option value="1">1 - Poor</option><option value="2">2 - Fair</option><option value="3">3 - Good</option><option value="4">4 - Very good</option><option value="5">5 - Excellent</option>
+                    </select>
+                    <p className="field-error" id="rating-error">{errors.rating}</p>
+                  </div>
+                  <div className="col-12">
+                    <label className="form-label" htmlFor="feedback-message">Your feedback</label>
+                    <textarea id="feedback-message" name="message" className={`form-control ${errors.message ? "is-invalid" : ""}`} rows={5} minLength={10} maxLength={500} required aria-invalid={!!errors.message} aria-describedby="message-error" placeholder="What do you like? What should we improve?" />
+                    <p className="field-error" id="message-error">{errors.message}</p>
+                  </div>
+                  <div className="col-12"><button type="submit" className="feedback-submit">SUBMIT FEEDBACK</button></div>
                 </div>
-                <div className="col-md-6">
-                  <label className="form-label" htmlFor="feedback-email">Email address</label>
-                  <input type="email" id="feedback-email" name="email" className={`form-control ${errors.email ? "is-invalid" : ""}`} required aria-invalid={!!errors.email} aria-describedby="email-error" />
-                  <p className="field-error" id="email-error">{errors.email}</p>
-                </div>
-                <div className="col-md-6">
-                  <label className="form-label" htmlFor="feedback-genre">Favorite game genre</label>
-                  <select id="feedback-genre" name="genre" className={`form-select ${errors.genre ? "is-invalid" : ""}`} required aria-invalid={!!errors.genre} aria-describedby="genre-error">
-                    <option value="">Choose a genre</option><option value="Action">Action</option><option value="Adventure">Adventure</option><option value="RPG">RPG</option><option value="Strategy">Strategy</option>
-                  </select>
-                  <p className="field-error" id="genre-error">{errors.genre}</p>
-                </div>
-                <div className="col-md-6">
-                  <label className="form-label" htmlFor="feedback-rating">Rate NextLevel</label>
-                  <select id="feedback-rating" name="rating" className={`form-select ${errors.rating ? "is-invalid" : ""}`} required aria-invalid={!!errors.rating} aria-describedby="rating-error">
-                    <option value="">Choose a rating</option><option value="1">1 - Poor</option><option value="2">2 - Fair</option><option value="3">3 - Good</option><option value="4">4 - Very good</option><option value="5">5 - Excellent</option>
-                  </select>
-                  <p className="field-error" id="rating-error">{errors.rating}</p>
-                </div>
-                <div className="col-12">
-                  <label className="form-label" htmlFor="feedback-message">Your feedback</label>
-                  <textarea id="feedback-message" name="message" className={`form-control ${errors.message ? "is-invalid" : ""}`} rows={5} minLength={10} maxLength={500} required aria-invalid={!!errors.message} aria-describedby="message-error" placeholder="What do you like? What should we improve?" />
-                  <p className="field-error" id="message-error">{errors.message}</p>
-                </div>
-                <div className="col-12"><button type="submit" className="feedback-submit">SUBMIT FEEDBACK</button></div>
-              </div>
-              {feedbackStatus && <p id="feedback-success" role="status" aria-live="polite">{feedbackStatus}</p>}
-            </form>
+                {feedbackStatus && <p id="feedback-success" role="status" aria-live="polite">{feedbackStatus}</p>}
+              </form>
+            )}
+            {activeForm === "add-game" && <AddGameForm />}
           </section>
           <section className="closing-banner d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-4" aria-labelledby="closing-title">
             <div><h2 id="closing-title">Your next favorite is out there.</h2><p>Explore the catalog and find a game worth saving.</p></div>
