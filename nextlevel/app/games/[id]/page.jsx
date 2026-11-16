@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import Link from "next/link";
 import { notFound, useParams } from "next/navigation";
 import Header from "@/src/common/header/header";
@@ -9,7 +9,9 @@ import { useGames } from "@/src/hooks/useGames";
 import { apiFetch } from "@/src/lib/api";
 import "@/app/styles/game.css";
 
-export default function GamePage() {
+// Keep the URL-dependent hook below a Suspense boundary. Next.js 16 with
+// cacheComponents cannot prerender useParams() outside of Suspense.
+function GamePageContent() {
   const { id } = useParams();
   const { games, loading, error } = useGames();
   const game = games.find((item) => String(item.id) === String(id));
@@ -162,5 +164,22 @@ export default function GamePage() {
       </main>
       <Footer />
     </div>
+  );
+}
+
+export default function GamePage() {
+  return (
+    <Suspense fallback={
+      <div className="game-page">
+        <header className="home-header">
+          <nav className="navbar home-shell" aria-label="Main navigation">
+            <Link className="home-brand" href="/">NextLevel</Link>
+          </nav>
+        </header>
+        <main className="gd-container gd-main" role="status">Loading game...</main>
+      </div>
+    }>
+      <GamePageContent />
+    </Suspense>
   );
 }

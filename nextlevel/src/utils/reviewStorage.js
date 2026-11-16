@@ -1,3 +1,4 @@
+/** Local, per-browser reviews. This feature intentionally does not use MongoDB. */
 export const REVIEWS_STORAGE_KEY = "nextlevel-reviews";
 export const REVIEWS_UPDATED_EVENT = "nextlevel-reviews-updated";
 export const MIN_REVIEW_LENGTH = 10;
@@ -18,6 +19,10 @@ function isStoredReview(value) {
     isDate(value.createdAt) && isDate(value.updatedAt);
 }
 
+/**
+ * Does not delete or overwrite corrupt data. The UI must explicitly offer a reset.
+ * Safe to import from a Server Component, but only read on the client.
+ */
 export function readReviews() {
   if (typeof window === "undefined") return { reviews: [], error: "" };
 
