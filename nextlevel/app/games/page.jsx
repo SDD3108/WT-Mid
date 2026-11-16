@@ -5,11 +5,11 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import Header from "@/src/common/header/header";
 import Footer from "@/src/common/footer/footer";
-import { games } from "@/src/data/games";
+import { useGames } from "@/src/hooks/useGames";
 import "@/app/styles/games.css";
 
-
-const GamesCatalog = ()=>{
+const GamesCatalog = () => {
+  const { games, loading, error } = useGames();
   const router = useRouter();
   const searchParams = useSearchParams();
   const urlSearch = searchParams.get("q") || "";
@@ -17,16 +17,14 @@ const GamesCatalog = ()=>{
   const genres = ["Action", "Adventure", "RPG", "Strategy", "Racing", "Indie"];
   const platforms = ["PC", "Console", "Mobile"];
   const defaultImage = "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(
-    '<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500"><rect width="100%" height="100%" fill="#e8e8e6"/><text x="50%" y="50%" fill="#777"  font-family="Arial" font-size="24" text-anchor="middle">No image</text></svg>'
+    '<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500"><rect width="100%" height="100%" fill="#e8e8e6"/><text x="50%" y="50%" fill="#777" font-family="Arial" font-size="24" text-anchor="middle">No image</text></svg>'
   );
-  const getImage = (path)=>{
-    return path?.replace(/^@\/assets\/images\//, "/images/") || defaultImage;
-  }
-  const handleImageError = (event)=>{
+  const getImage = (path) => path?.replace(/^@\/assets\/images\//, "/images/") || defaultImage;
+  const handleImageError = (event) => {
     event.currentTarget.onerror = null;
     event.currentTarget.src = defaultImage;
-  }
-  const canonicalGenre = genres.find((item) => item.toLowerCase() == urlGenre.trim().toLowerCase()) || "";
+  };
+  const canonicalGenre = genres.find((item) => item.toLowerCase() === urlGenre.trim().toLowerCase()) || "";
 
   const [search, setSearch] = useState(urlSearch);
   const [genre, setGenre] = useState(canonicalGenre);
@@ -34,7 +32,6 @@ const GamesCatalog = ()=>{
   const [rating, setRating] = useState(0);
   const [sort, setSort] = useState("popular");
   const [year, setYear] = useState("all");
-
 
   useEffect(() => {
     setSearch(urlSearch);
@@ -44,17 +41,13 @@ const GamesCatalog = ()=>{
   const query = search.trim().toLowerCase();
   const filteredGames = games
     .filter((game) => {
-      const matchesSearch = !query || [
-        game.title,
-        ...game.genre,
-        ...game.platform,
-      ].some((value) => value?.toLowerCase().includes(query));
-      const matchesGenre = !genre || game.genre.some((item) => item.toLowerCase() == genre.toLowerCase());
+      const matchesSearch = !query || [game.title, ...game.genre, ...game.platform]
+        .some((value) => value?.toLowerCase().includes(query));
+      const matchesGenre = !genre || game.genre.some((item) => item.toLowerCase() === genre.toLowerCase());
       const matchesPlatform = !platform || game.platform.includes(platform);
       const releaseYear = Number(game.releaseDate?.slice(0, 4));
       const matchesYear = year === "all" ||
-        (year === "earlier" ? releaseYear > 0 && releaseYear < 2025 : releaseYear == Number(year));
-
+        (year === "earlier" ? releaseYear > 0 && releaseYear < 2025 : releaseYear === Number(year));
       return matchesSearch && matchesGenre && matchesPlatform && game.rating >= rating && matchesYear;
     })
     .sort((a, b) => {
@@ -81,6 +74,8 @@ const GamesCatalog = ()=>{
           <ol><li><Link href="/">Home</Link></li><li aria-current="page">Games</li></ol>
         </nav>
         <h1>Browse all games</h1>
+        {loading && <p role="status">Loading games from MongoDB...</p>}
+        {error && <p role="alert">Could not load games: {error}. Check the backend.</p>}
         <form className="gc-search" role="search" onSubmit={(event) => event.preventDefault()}>
           <input type="search" aria-label="Search games" placeholder="Search games..." value={search} onChange={(event) => setSearch(event.target.value)} />
           <button type="submit">SEARCH</button>
@@ -156,11 +151,11 @@ const GamesCatalog = ()=>{
                 ))}
               </div>
             </div>
-            {filteredGames.length === 0 && (
+            {!loading && !error && filteredGames.length === 0 && (
               <div className="gc-empty" id="games-empty">
                 <h2>No games found</h2>
                 <p>Try another search or reset your filters.</p>
-                <button className="btn gc-empty-button" id="games-empty-reset" type="button" onClick={resetFilters}>Reset filters</button>
+                <button className="btn gc-empty-button" type="button" onClick={resetFilters}>Reset filters</button>
               </div>
             )}
           </section>
@@ -169,16 +164,18 @@ const GamesCatalog = ()=>{
       <Footer />
     </div>
   );
-}
+};
 
 export default function GamesPage() {
-  return <Suspense fallback={
-    <div className="games-page">
-      <Header />
-      <main className="gc-container gc-main">Loading games...</main>
-      <Footer />
-    </div>
-  }>
-    <GamesCatalog />
-  </Suspense>;
+  return (
+    <Suspense fallback={
+      <div className="games-page">
+        <Header/>
+        <main className="gc-container gc-main">Loading games...</main>
+        <Footer />
+      </div>
+    }>
+      <GamesCatalog />
+    </Suspense>
+  );
 }

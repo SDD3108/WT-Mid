@@ -1,37 +1,20 @@
+"use client";
+
 import Link from "next/link";
 import Header from "@/src/common/header/header";
 import Footer from "@/src/common/footer/footer";
-import { games } from "@/src/data/games";
+import { useGames } from "@/src/hooks/useGames";
 import "@/app/styles/categories+favorites.css";
 
 export default function CategoriesPage() {
+  const { games, loading, error } = useGames();
   const categories = [
-    {
-      name: "Action",
-      image: "action.png",
-      description: "Action game artwork",
-  
-    },
-    {
-      name: "Adventure",
-      image: "adventure.png",
-      description: "Adventure game artwork",
-  
-    },
-    {
-      name: "RPG",
-      image: "rpg.png",
-      description: "Role-playing game artwork",
-  
-    },
-    {
-      name: "Strategy",
-      image: "strategy.png",
-      description: "Strategy game artwork",
-  
-    },
+    { name: "Action", description: "Action game artwork" },
+    { name: "Adventure", description: "Adventure game artwork" },
+    { name: "RPG", description: "Role-playing game artwork" },
+    { name: "Strategy", description: "Strategy game artwork" },
   ];
-  
+
   return (
     <div>
       <Header />
@@ -42,6 +25,8 @@ export default function CategoriesPage() {
         <section aria-labelledby="page-title">
           <h1 id="page-title" className="page-title">Explore by genre</h1>
           <p className="page-intro mt-2">Start with a play style you love, then narrow the catalog to find the right game.</p>
+          {loading && <p role="status">Loading categories...</p>}
+          {error && <p role="alert">Could not load games: {error}</p>}
           <div className="category-grid mt-4">
             {categories.map(({ name, description }) => {
               const count = games.filter((game) => game.genre.some((item) => item.toLowerCase() === name.toLowerCase())).length;
@@ -59,7 +44,7 @@ export default function CategoriesPage() {
           </div>
         </section>
         <aside className="catalog-cta" aria-labelledby="cta-title">
-          <div><h2 id="cta-title">Not sure where to start?</h2><p>Browse the complete NextLevel catalog.</p></div>
+          <div><h2>Not sure where to start?</h2><p>Browse the complete NextLevel catalog.</p></div>
           <Link className="btn btn-light btn-sm text-black" href="/games">View all games <span aria-hidden="true">→</span></Link>
         </aside>
       </main>
