@@ -92,7 +92,7 @@ function GamePageContent() {
               <span className="gd-rating-value"><span className="gd-star" aria-hidden="true">★</span>
                 <span id="game-rating" aria-label={`${game.rating} out of 5`}>{game.rating}</span>
               </span>
-              {game.ratingCount && <span>{game.ratingCount.toLocaleString("en-US")} ratings</span>}
+              {game.ratingCount > 0 ? <span>{game.ratingCount.toLocaleString("en-US")} ratings</span> : <span></span>}
             </div>
             <p className="gd-description" id="game-description">{game.description}</p>
             <ul className="gd-platforms" id="game-platforms" aria-label="Available platforms">
